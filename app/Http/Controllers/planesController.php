@@ -35,7 +35,7 @@ class planesController extends Controller
 
     public function planes()
     {
-        $id = Auth::user()->id;             
+        $id = Auth::user()->id;
         $usuario = Users::find($id);
         $planes = Planes::all();
         $pago = Pago_planes::where('id_usuario', $id)
@@ -47,7 +47,7 @@ class planesController extends Controller
 
     public function compras()
     {
-        $id = Auth::user()->id;             
+        $id = Auth::user()->id;
         $usuario = Users::find($id);
         $planes = Planes::all();
         $pago = Pago_planes::where('id_usuario', $id)
@@ -59,7 +59,7 @@ class planesController extends Controller
 
     public function planesConfigurables()
     {
-        $id = Auth::user()->id;             
+        $id = Auth::user()->id;
         $usuario = Users::find($id);
         $planes = Planes::all();
         $planesConfig = Plan_configurable::all();
@@ -69,14 +69,14 @@ class planesController extends Controller
         ->first();
     return view('planesConfigurables',compact('usuario', 'planes', 'pago', 'planesConfig'));
     }
-    
+
 
     public function guardarPago(Request $request)
     {
-       
+
         if(Auth::user()){
              $id = Auth::user()->id;
-             $Pago = new Pago_planes; 
+             $Pago = new Pago_planes;
              $file = $request->imagebanco;
              $complete = '/files/comprobantes/'.$id;
              $upload = Storage::disk('s3')->put($complete, $file, 'public');
@@ -97,9 +97,9 @@ class planesController extends Controller
                }
                   else{
                       return redirect('/planes');
-                      
-         } 
-        
+
+         }
+
     }
 
 
