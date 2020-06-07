@@ -93,6 +93,8 @@ Route::get('/planes/{name?}', 'planesController@planes')->name('planes');
 Route::resource('/planConfigurableIndustria', 'planes\planController')->middleware('auth');
 Route::resource('/pagosPlanes', 'planes\pagosController')->middleware('auth');
 Route::resource('/listarPagosPlanes', 'planes\pagosActivosController')->middleware('auth');
+Route::get('/pagos/{id}', 'planesController@pagos')->name('pagos');
+Route::post('/guardarPago', 'planesController@guardarPago')->name('guardarPago');
 
 Route::get('/descargar-fotos/{id}', 'MisProyectosController@descargarFotos')->name('descargarFotos');
 

@@ -141,6 +141,9 @@
   opacity: .5;
   cursor: pointer;
 }
+.text-azul {
+  color: #65caf8;
+}
 @media screen and (max-width: 735px) {
    .message-input .wrap .attachment {
     margin-top: 17px;
@@ -174,6 +177,55 @@
     <style>
 small { 
   font-size: 10px;
+}
+
+#selectPlan {
+  display: none;
+}
+#tipoPagos div {
+  display: none;
+}
+hr.new3 {
+  border: 1px solid white;
+}
+hr.new4 {
+  border: 1px solid ;
+}
+.pepe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.circularBtn {
+  width: 55%;
+  border: 2px solid rgb(200, 198, 198);  
+  border-radius: 50%;
+  margin-top: -90px;
+  background-color: white;
+}
+.colorHead {
+  color: white;
+  font-weight: 500;
+}
+
+.card-pricing ul {
+    list-style: none;
+    padding: 0;
+    max-width: 90%;
+}
+.p {
+  color: rgb(141, 137, 137);
+  font-weight: 500;
+}
+.cardT {
+  margin-bottom: 3.5rem;
+  margin-top: 3.5rem;
+  font-weight: 700;
+}
+.imgPrice {
+  background: url('../assets/img/footer-wave.png');
+  background-repeat: no-repeat;
+  background-size: 120% 100%;
 }
 </style>
 <div class="page-header" data-parallax="true" style="background-image: url('../assets/img/city-profile-two.jpg'); height: 240px;">
@@ -265,6 +317,12 @@ small {
               <i style="font-size: 30px;margin-top:-15px" class="material-icons">cloud_download</i>
           </button>
        
+          <button class="btn btn-primary btn-link"   style="padding: 5px 10px 5px 0px;" alt="pagos" 
+          data-toggle="modal" data-perfil-id="{{$proyectos->id}}" 
+              data-target="#pagoModal">
+                <i style="font-size: 30px;margin-top:-15px" class="material-icons">cloud_download</i>
+            </button>
+
           <button class="btn btn-link  @if($proyectos->seleccion_finalizada == 0)  
               btn-link  btn-disabled @else  btn-primary @endif" style="padding: 5px 10px 5px 0px;"
           alt="Enviar Mensaje por WhatsApp" data-toggle="modal" data-perfil-id="{{$proyectos->id}}" 
@@ -387,21 +445,71 @@ $uid = md5(uniqid(rand(), true));
     </div> 
 </div>
 
-
-<!-- Register Modal -->
+    <!-- Register Modal -->
 <div class="modal fade" id="elegirmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-signup">
-            <div class="modal-content">
-                <div class="card card-signup card-plain" style="padding:0px">
-                      <div class="modal-body" style="padding:0px" id="mbody">
-                        
-                      </div>
+  <div class="modal-dialog modal-signup">
+      <div class="modal-content">
+          <div class="card card-signup card-plain" style="padding:0px">
+                <div class="modal-body" style="padding:0px" id="mbody">
+                  
                 </div>
-            </div>
-        </div>
-    </div>
-    <!--  End Modal -->
+          </div>
+      </div>
+  </div>
+</div>
+<!--  End Modal -->
 
+<!-- small modal -->
+<div class="modal fade" id="pagoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg ">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
+      </div>
+      <div class="modal-body text-center bkg-ind">
+  
+      
+            <div class="container ">
+              <h3>Planes Vigentes</h3>
+              <div class="row">          
+              <div class="content pepe" style="width: 100%;" >
+                <div style="width: 340px">
+                  <div class="card card-pricing">
+                    <div class="card-content">
+                    <div class="imgPrice" style="margin-left:-12px; height: 140px;">
+                     <div><h6 class="category colorHead" style="margin-top: -14px;">------</h6>
+                      <h2 class="category colorHead" style="margin-top: -14px;">{{$planes[0]->descripcion}}</h2>
+                    </div> 
+                    </div>
+                      <h2 class="category text-gray"></h2>
+                      <div class="content pepe">
+                      <div class="circularBtn">
+                      <h1 class="cardT"><small>$</small>{{$planes[0]->monto}}</h1>
+                    </div>
+                  </div>
+                      <ul class="mb-4 mt-3">
+                      @foreach($planes_items as $items)
+                         <li><p class="p" style="font-size: larger;"><i class="material-icons text-azul">check_circle_outline</i>{{$items->item}}</p></li>
+                      @endforeach
+                      </ul>
+                      <a href="{{ url('pagos/'.$proyectos->id) }}" class="btn btn-primary btn-round mb-3">
+                        Realizar Pago
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!--    end small modal -->
+</div>
 
 
 <!-- small modal -->
@@ -411,37 +519,25 @@ $uid = md5(uniqid(rand(), true));
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
             </div>
-			
             <div class="modal-body text-center">
             <h5 class="mb-0 mt-0">Enviar Proyecto por email</h5>         
-
                                 <p>Una vez seleccionados todos los talentos puede enviar el proyecto por email.<p>
-
                                 <div class="row">
                                             <div class="col-md-12">
-
                                                 <input type="email" name="email" id="email" class="form-control input-form-pagos" 
                                                 style="color: beige; background-color:#464648 ">
-
                                   </div>
                        </div>
                   <input type="hidden" name="proyecto" id="proyecto"/>     
                  <input type="button" class="btn btn-success btn-simple" id="enviar_mail" value="Enviar">
-               
-                  
             </div>
             <div class="modal-footer text-center" style="justify-content: center; height: 75px"  id="mobodyMail">
-     
             </div>
           </div>
-        
         </div>
-    
       </div>
       <!--    end small modal -->
 </div>
-
-
 
 
 <!-- small modal -->
@@ -485,8 +581,6 @@ $uid = md5(uniqid(rand(), true));
 <!--    end small modal -->
 </div>
 
-
-
 <!-- small modal -->
 <div class="modal fade" id="descargarFotos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg ">
@@ -517,9 +611,6 @@ $uid = md5(uniqid(rand(), true));
       </div>
       <!--    end small modal -->
 </div>
-
-
-
 
 <!-- small modal -->
 <div class="modal fade" id="enviarmensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -665,11 +756,6 @@ $(document).on('click', '#videar', function() {
   
   });
 
-
-
-
-
-
   $('#chatearmodal').on('show.bs.modal', function(e) {
     var receptor = $(e.relatedTarget).data('perfil-id');
     var casting_id = $(e.relatedTarget).data('casting-id');
@@ -722,12 +808,31 @@ $(document).on('click', '#videar', function() {
 
   });
 
-
   $('#chatearmodal').on('hide.bs.modal', function(e) {
     $('#mensajillo').val('');
     clearInterval(timeout);
 });
 
+// $('#pagoModal').on('show.bs.modal', function(e) {
+//     // var dependent = $(e.relatedTarget).data('perfil-id');
+//     $.ajax({
+//            url: "/modal-pagos/"+proyectos->id,
+//            method: "post",
+//            data:{email,email},
+// 		    beforeSend: function(){
+//                         $('#mobodyMail').css("display", "block");
+//                         $('#mobodyMail').css("visibility", "visible");
+//                         $('#mobodyMail').html('<div class="loading" style="opacity: .9;"><img src="https://industria.ivotalents.com/img/loader.gif" alt="loading"  style="height: 35px;  width: 35px;" /><br/>Un momento, por favor...</div><br/>');
+//                         },
+//            success:function(result)
+//              {
+// 				 $('#mobodyMail').css("display", "none");
+//                $('#mobodyMail').css("visibility", "hidden");
+//               $('#enviarpormail').modal('toggle');
+//              }
+//           })
+
+// });
 
 $('#enviarpormail').on('show.bs.modal', function(e) {
     var dependent = $(e.relatedTarget).data('perfil-id');
