@@ -14,6 +14,7 @@ use App\Models\Admin\Pago_planes;
 use Redirect;
 use App\Models\Mensajes;
 use App\Models\Chats;
+use App\Models\Admin\Planes_Items;
 use Snipe\BanBuilder\CensorWords;
 use Embed;
 use GuzzleHttp\Client;
@@ -46,11 +47,11 @@ class unProyectoController extends Controller
         $planes = Planes::all();
         $elProyecto = $uId;
         $proyectos = Castings::where('id', $uId)->first();
-
+        $planes_items = Planes_Items::all();
         $talentosProyecto = CastingsSeleccionados::with(['Talentos', 'Talentos.Talentos',
         'Talentos.Talentos.Talento1','Talentos.Talentos.Talento2','Talentos.Talentos.Talento3','MensajesNoLeidosIndustria'])->where('casting_id', $uId)->get();
 
-        return view('unProyecto',compact('usuario', 'proyectos', 'talentosProyecto','planes', 'elProyecto'));
+        return view('unProyecto',compact('usuario', 'proyectos', 'talentosProyecto','planes', 'elProyecto', 'planes_items'));
     }
 
     public function listarTalentoSeleccionado($uId)
