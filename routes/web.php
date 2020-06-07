@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth','verificartalento','verificaradmin']], fun
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/bienvenida', 'HomeController@bienvenida')->name('bienvenida');
 Route::get('/mis-talentos', 'MisTalentosController@index')->name('mistalentos');
 Route::get('/buscar', 'BuscarController@index')->name('buscar');
 Route::any('/mis-proyectos', 'MisProyectosController@index')->name('misproyectos');
