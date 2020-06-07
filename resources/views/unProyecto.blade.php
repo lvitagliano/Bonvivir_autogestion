@@ -485,8 +485,6 @@ $uid = md5(uniqid(rand(), true));
 <!--    end small modal -->
 </div>
 
-
-
 <!-- small modal -->
 <div class="modal fade" id="descargarFotos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg ">
