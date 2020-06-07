@@ -700,7 +700,6 @@ $(document).on('click', '#videar', function() {
               })
 
         timeout = setInterval(function(){
-        alert('');
         $.ajax({
                 url: "/obtener-chat/"+receptor+"/"+casting_id,
                 method: "get",
