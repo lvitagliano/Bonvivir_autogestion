@@ -141,9 +141,6 @@
   opacity: .5;
   cursor: pointer;
 }
-.text-azul {
-  color: #65caf8;
-}
 @media screen and (max-width: 735px) {
    .message-input .wrap .attachment {
     margin-top: 17px;
@@ -175,57 +172,8 @@
 }
   </style>
     <style>
-small { 
+small {
   font-size: 10px;
-}
-
-#selectPlan {
-  display: none;
-}
-#tipoPagos div {
-  display: none;
-}
-hr.new3 {
-  border: 1px solid white;
-}
-hr.new4 {
-  border: 1px solid ;
-}
-.pepe {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.circularBtn {
-  width: 55%;
-  border: 2px solid rgb(200, 198, 198);  
-  border-radius: 50%;
-  margin-top: -90px;
-  background-color: white;
-}
-.colorHead {
-  color: white;
-  font-weight: 500;
-}
-
-.card-pricing ul {
-    list-style: none;
-    padding: 0;
-    max-width: 90%;
-}
-.p {
-  color: rgb(141, 137, 137);
-  font-weight: 500;
-}
-.cardT {
-  margin-bottom: 3.5rem;
-  margin-top: 3.5rem;
-  font-weight: 700;
-}
-.imgPrice {
-  background: url('../assets/img/footer-wave.png');
-  background-repeat: no-repeat;
-  background-size: 120% 100%;
 }
 </style>
 <div class="page-header" data-parallax="true" style="background-image: url('../assets/img/city-profile-two.jpg'); height: 240px;">
@@ -264,7 +212,7 @@ hr.new4 {
                                   <i class="material-icons">search</i> Buscar
                                 </a>
                               </li>
-                      
+
                         <li class="list-horizontal">
                                 <a class="btn-nav" href="#">
                                   <i class="material-icons">forum</i> Chat
@@ -282,71 +230,65 @@ hr.new4 {
       <br>
 
 
-      
-      <div class="row" style="margin-top: -80px">          
+
+      <div class="row" style="margin-top: -80px">
 
           @if($errors->any())
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h4>{{$errors->first()}}</h4> 
+                <h4>{{$errors->first()}}</h4>
             </div>
            @endif
 
-      
+
            <form id="frmBajarPDF" method="post" action="{{ route('generatepdf',['id'=>$proyectos->id]) }}">
             {{csrf_field()}}
           </form>
-        <div class="col-lg-4 col-md-4 col-sm-12"><h4 style="color: #1f8089"><b>TALENTOS INVITADOS AL PROYECTO:</b> {{$proyectos->nombre}}     
-        </h4> 
+        <div class="col-lg-4 col-md-4 col-sm-12"><h4 style="color: #1f8089"><b>TALENTOS INVITADOS AL PROYECTO:</b> {{$proyectos->nombre}}
+        </h4>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12 text-right"><h4 style="color: #1f8089">
-          <b> 
+          <b>
           <button class="btn btn-primary btn-link"  style="padding: 5px 10px 5px 0px;"
           id="bajarpdf" alt="Descargar PDF">
           <i style="font-size: 30px;margin-top:-15px" class="material-icons">picture_as_pdf</i>
         </button>
 
-        <button class="btn btn-primary btn-link"   style="padding: 5px 10px 5px 0px;" data-toggle="modal"  
-        alt="Enviar Casting por Mail" data-perfil-id="{{$proyectos->id}}" 
+        <button class="btn btn-primary btn-link"   style="padding: 5px 10px 5px 0px;" data-toggle="modal"
+        alt="Enviar Casting por Mail" data-perfil-id="{{$proyectos->id}}"
         data-target="#enviarpormail">
             <i style="font-size: 30px;margin-top:-15px" class="material-icons">email</i>
         </button>
 
-        <button class="btn btn-primary btn-link"   style="padding: 5px 10px 5px 0px;" alt="Descargar Imagenes de Seleccionados" 
-        data-toggle="modal" data-perfil-id="{{$proyectos->id}}" 
+        <button class="btn btn-primary btn-link"   style="padding: 5px 10px 5px 0px;" alt="Descargar Imagenes de Seleccionados"
+        data-toggle="modal" data-perfil-id="{{$proyectos->id}}"
             data-target="#descargarFotos">
               <i style="font-size: 30px;margin-top:-15px" class="material-icons">cloud_download</i>
           </button>
-       
-          <button class="btn btn-primary btn-link"   style="padding: 5px 10px 5px 0px;" alt="pagos" 
-          data-toggle="modal" data-perfil-id="{{$proyectos->id}}" 
-              data-target="#pagoModal">
-                <i style="font-size: 30px;margin-top:-15px" class="material-icons">cloud_download</i>
-            </button>
 
-          <button class="btn btn-link  @if($proyectos->seleccion_finalizada == 0)  
+          <button class="btn btn-link  @if($proyectos->seleccion_finalizada == 0)
               btn-link  btn-disabled @else  btn-primary @endif" style="padding: 5px 10px 5px 0px;"
-          alt="Enviar Mensaje por WhatsApp" data-toggle="modal" data-perfil-id="{{$proyectos->id}}" 
+          alt="Enviar Mensaje por WhatsApp" data-toggle="modal" data-perfil-id="{{$proyectos->id}}"
           data-target="#enviarmensajes">
              <i style="font-size: 30px;margin-top:-15px" class="material-icons">sms</i>
-         </button></b></h4> 
+         </button></b></h4>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 text-right">
-              <a class="btn-nav mr-2" 
-                  @if($proyectos->seleccion_finalizada == 0)  
-                  href="{{ route('finalizarseleccion',['castid' => $proyectos->id]) }}" 
-                  onclick="return confirm('Desea Finalizar la Seleccion de Talentos?')"   
+              <a class="btn-nav mr-2"
+                  @if($proyectos->seleccion_finalizada == 0)
+                  href="{{ route('finalizarseleccion',['castid' => $proyectos->id]) }}"
+                  onclick="return confirm('Desea Finalizar la Seleccion de Talentos?')"
                   @else
-                  href="#" 
-                  @endif    
-                  
+                  href="#"
+                  @endif
+
                   @if($proyectos->seleccion_finalizada == 1)
-                  style="color:white;background:gray">  
+                  style="color:white;background:gray">
                   @else
                   style="color:white;background:#25B7AE">
                   @endif
-                  <i class="material-icons mb-2">done_outline</i>   FINALIZAR SELECCION  
+                  <i class="material-icons mb-2">done_outline</i>   FINALIZAR SELECCION
                 </a>
-                
+
         <a href="{{ route('misproyectos') }}" class="btn btn-just-icon btn-round"> <i class="material-icons mb-2">reply</i></a>
         </div>
 
@@ -380,30 +322,30 @@ hr.new4 {
               <div class="tab-pane active show" id="profile">
                   <div class="loader" id="loader" style="background: #EEEEEE;"></div>
                 <div class="row" id="resultadosAceptado" style="visibility:hidden;">
-      
-                </div>                
-                
+
+                </div>
+
               </div>
               <div class="tab-pane" id="messages">
                   <div class="loader" id="loader" style="background: #EEEEEE;"></div>
                 <div class="row" id="resultadosRechazados" style="visibility:hidden;">
 
                 </div>
-                
+
               </div>
               <div class="tab-pane" id="todos">
                   <div class="loader" id="loader" style="background: #EEEEEE;"></div>
                 <div class="row" id="resultados" style="visibility:hidden;">
 
                 </div>
-                
+
               </div>
-             
+
             </div>
           </div>
         </div>
 
-        
+
       </div>
 
     </div>
@@ -423,7 +365,7 @@ $uid = md5(uniqid(rand(), true));
 <div class="flotante">
     <div class="flotante-line">
         <h5 class="flotante-in-line">Mis talentos</h5>
-    </div> 
+    </div>
     <div style="margin-top: 30px;margin-bottom: 50px;">
     <ul class="ul-foot">
         <li class="list-horizontal">
@@ -441,75 +383,25 @@ $uid = md5(uniqid(rand(), true));
                   <i class="material-icons">forum</i>
                 </a>
               </li>
-      </ul>  
-    </div> 
-</div>
-
-    <!-- Register Modal -->
-<div class="modal fade" id="elegirmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-signup">
-      <div class="modal-content">
-          <div class="card card-signup card-plain" style="padding:0px">
-                <div class="modal-body" style="padding:0px" id="mbody">
-                  
-                </div>
-          </div>
-      </div>
-  </div>
-</div>
-<!--  End Modal -->
-
-<!-- small modal -->
-<div class="modal fade" id="pagoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg ">
-    <div class="modal-content" >
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
-      </div>
-      <div class="modal-body text-center bkg-ind">
-  
-      
-            <div class="container ">
-              <h3>Planes Vigentes</h3>
-              <div class="row">          
-              <div class="content pepe" style="width: 100%;" >
-                <div style="width: 340px">
-                  <div class="card card-pricing">
-                    <div class="card-content">
-                    <div class="imgPrice" style="margin-left:-12px; height: 140px;">
-                     <div><h6 class="category colorHead" style="margin-top: -14px;">------</h6>
-                      <h2 class="category colorHead" style="margin-top: -14px;">{{$planes[0]->descripcion}}</h2>
-                    </div> 
-                    </div>
-                      <h2 class="category text-gray"></h2>
-                      <div class="content pepe">
-                      <div class="circularBtn">
-                      <h1 class="cardT"><small>$</small>{{$planes[0]->monto}}</h1>
-                    </div>
-                  </div>
-                      <ul class="mb-4 mt-3">
-                      @foreach($planes_items as $items)
-                         <li><p class="p" style="font-size: larger;"><i class="material-icons text-azul">check_circle_outline</i>{{$items->item}}</p></li>
-                      @endforeach
-                      </ul>
-                      <a href="{{ url('pagos/'.$proyectos->id) }}" class="btn btn-primary btn-round mb-3">
-                        Realizar Pago
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
-            </div>
-
-
-        
-      </div>
+      </ul>
     </div>
-  </div>
 </div>
-<!--    end small modal -->
-</div>
+
+
+<!-- Register Modal -->
+<div class="modal fade" id="elegirmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-signup">
+            <div class="modal-content">
+                <div class="card card-signup card-plain" style="padding:0px">
+                      <div class="modal-body" style="padding:0px" id="mbody">
+
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  End Modal -->
+
 
 
 <!-- small modal -->
@@ -519,25 +411,37 @@ $uid = md5(uniqid(rand(), true));
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
             </div>
+
             <div class="modal-body text-center">
-            <h5 class="mb-0 mt-0">Enviar Proyecto por email</h5>         
+            <h5 class="mb-0 mt-0">Enviar Proyecto por email</h5>
+
                                 <p>Una vez seleccionados todos los talentos puede enviar el proyecto por email.<p>
+
                                 <div class="row">
                                             <div class="col-md-12">
-                                                <input type="email" name="email" id="email" class="form-control input-form-pagos" 
+
+                                                <input type="email" name="email" id="email" class="form-control input-form-pagos"
                                                 style="color: beige; background-color:#464648 ">
+
                                   </div>
                        </div>
-                  <input type="hidden" name="proyecto" id="proyecto"/>     
+                  <input type="hidden" name="proyecto" id="proyecto"/>
                  <input type="button" class="btn btn-success btn-simple" id="enviar_mail" value="Enviar">
+
+
             </div>
             <div class="modal-footer text-center" style="justify-content: center; height: 75px"  id="mobodyMail">
+
             </div>
           </div>
+
         </div>
+
       </div>
       <!--    end small modal -->
 </div>
+
+
 
 
 <!-- small modal -->
@@ -552,34 +456,36 @@ $uid = md5(uniqid(rand(), true));
 
 
         <div class=""  id="mensajes">
-         
-          
+
+
         </div>
 
-        
+
         <div class="message-input mt-2">
           <div class="wrap">
           <input type="text" id="mensajillo" style=";width: calc(100% - 110px)" placeholder="Escribe tu Mensaje...">
 
-          <button id="videar" onclick="window.open('/mostrar-video/{{$uid}}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=100,width=1054,height=808');" style="float:left;margin: 2px;" class="submit"><i class="fa fa-video-camera"  aria-hidden="true"></i></button>
+          <button id="videar" onclick="window.open('https://meet.jit.si/{{$uid}}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=100,width=1054,height=808');" style="float:left;margin: 2px;" class="submit"><i class="fa fa-video-camera"  aria-hidden="true"></i></button>
           <input type="hidden" id="mensajilloVideo" name="mensajilloVideo" value="{{$uid}}">
           <button id="scridere" style="float:left;margin: 2px;"   class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
           </div>
         </div>
 
         {{-- <div id="mensajes" class="mt-2"></div> --}}
-         
-        <input type="hidden" name="receptor_id" id="receptor_id"/>     
-        <input type="hidden" name="casting_id" id="casting_id"/> 
+
+        <input type="hidden" name="receptor_id" id="receptor_id"/>
+        <input type="hidden" name="casting_id" id="casting_id"/>
       </div>
-     
+
     </div>
-  
+
   </div>
 
 </div>
 <!--    end small modal -->
 </div>
+
+
 
 <!-- small modal -->
 <div class="modal fade" id="descargarFotos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -589,28 +495,31 @@ $uid = md5(uniqid(rand(), true));
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
             </div>
             <div class="modal-body text-center">
-            <h5 class="mb-0 mt-0">Descargar Fotos de Talentos Seleccionados.</h5>         
-				
+            <h5 class="mb-0 mt-0">Descargar Fotos de Talentos Seleccionados.</h5>
+
 				  <div class="modal-body" style="padding:0px;visibility:hidden; height: 45px" id="mobody">
-							
+
                       </div>
-					  
-				<input type="hidden" name="proyecto_foto" id="proyecto_foto"/>  
+
+				<input type="hidden" name="proyecto_foto" id="proyecto_foto"/>
 
                  <input type="button" class="btn btn-success btn-simple" id="bajar_foto" value="Descargar Fotos">
-               
-                  
+
+
             </div>
             <div class="modal-footer text-center" style="justify-content: center; height: 35px">
-     
+
             </div>
           </div>
-        
+
         </div>
-    
+
       </div>
       <!--    end small modal -->
 </div>
+
+
+
 
 <!-- small modal -->
 <div class="modal fade" id="enviarmensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -619,35 +528,35 @@ $uid = md5(uniqid(rand(), true));
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
             </div>
-	
+
             <div class="modal-body text-center">
-							<h5 class="mb-0 mt-0">Enviar Mensaje a Talentos Seleccionados.</h5>         
+							<h5 class="mb-0 mt-0">Enviar Mensaje a Talentos Seleccionados.</h5>
 
                                 <p>Una vez seleccionados todos los talentos puede enviar un mensaje a todos por WhatsApp.<p>
 
                                 <div class="row">
                                             <div class="col-md-12">
-                                                <input type="text" name="titulo" id="titulo" class="form-control input-form-pagos" 
+                                                <input type="text" name="titulo" id="titulo" class="form-control input-form-pagos"
                                                 style="color: beige; background-color:#464648 " placeholder="Titulo..">
 
 
-                                                <textarea name="msj" id="msj" class="form-control input-form-pagos" 
+                                                <textarea name="msj" id="msj" class="form-control input-form-pagos"
                                                 style="color: beige; background-color:#464648 " placeholder="Mensaje..."></textarea>
 
                                   </div>
                        </div>
-                  <input type="hidden" name="proyecto_msj" id="proyecto_msj"/>     
+                  <input type="hidden" name="proyecto_msj" id="proyecto_msj"/>
                  <input type="button" class="btn btn-success btn-simple" id="enviar_msj" value="Enviar">
-               
-                  
+
+
             </div>
             <div class="modal-footer text-center" style="justify-content: center; height: 75px" id="mobodyMsj">
-     
+
 			</div>
           </div>
-        
+
         </div>
-    
+
       </div>
       <!--    end small modal -->
 
@@ -665,20 +574,20 @@ $uid = md5(uniqid(rand(), true));
                 <div class="modal-body">
                     <h4 class="modal-title">Enviar Link de Video</h4>
                     <br>
-    
+
                      <textarea class="form-control" placeholder="Ingresa aqui el link de tu Video..." required name="videolink" id="videolink"  cols="50" rows="1" id="video_link"></textarea>
-    
+
                         <br /><br />
-                          <input type="hidden" name="id_enviable" id="id_enviable"/>    
-                          <input type="hidden" name="casting_id" id="casting_id"/> 
+                          <input type="hidden" name="id_enviable" id="id_enviable"/>
+                          <input type="hidden" name="casting_id" id="casting_id"/>
                 </div>
-    
+
                   </form>
                 <div class="modal-footer">
                      <input type="submit"  class="btn btn-success"  style="background-color: #31B404; border-color: #31B404" id="btnVideoLink"  name="btnVideoLink"  value="ENVIAR" />
-    
+
                 </div>
-    
+
             </div>
         </div>
     </div>
@@ -691,10 +600,10 @@ $uid = md5(uniqid(rand(), true));
 
  <script>
 
- 
- $(document).on('click', '.me_caigo_acept', function(e, parameters) {   
+
+ $(document).on('click', '.me_caigo_acept', function(e, parameters) {
       var _token = '{{csrf_token()}}';
-	 
+
       $.ajax({
               url: "/seleccionar/"+this.id,
               method: "GET",
@@ -705,12 +614,12 @@ $uid = md5(uniqid(rand(), true));
               })
 
     });
-	
-	
+
+
 var timeout;
 
 
-$(document).on('click', '#scridere', function() {   
+$(document).on('click', '#scridere', function() {
   var dependent = $('#receptor_id').val();
   var mensajillo = $('#mensajillo').val();
   var casting_id = $('#casting_id').val();
@@ -718,7 +627,7 @@ $(document).on('click', '#scridere', function() {
             url: "/enviar-mensaje-chat/"+dependent,
             method: "post",
             data:{mensajillo:mensajillo,casting_id:casting_id},
-              
+
             success:function(result)
               {
                 $('#mensajes').html(result);
@@ -727,23 +636,23 @@ $(document).on('click', '#scridere', function() {
                   $t.animate({"scrollTop": $('#msjes')[0].scrollHeight}, 0);
               }
             })
-  
-  
+
+
   });
 
 
-$(document).on('click', '#videar', function() {   
+$(document).on('click', '#videar', function() {
   var dependent = $('#receptor_id').val();
   var mensajillo = $('#mensajilloVideo').val();
   var casting_id = $('#casting_id').val();
 
 
-  mensajillo = 'Te invito a un Video Chat conmigo: https://meet.ivotalents.com/' + mensajillo; 
+  mensajillo = 'Te invito a un Video Chat conmigo: <a href="https://meet.ivotalents.com/' + mensajillo +'" target="_blank" style="color:orange">  <b>Iniciar Video Chat</b></a>';
     $.ajax({
             url: "/enviar-mensaje-chat/"+dependent,
             method: "post",
             data:{mensajillo:mensajillo,casting_id:casting_id},
-              
+
             success:function(result)
               {
                 $('#mensajes').html(result);
@@ -752,18 +661,23 @@ $(document).on('click', '#videar', function() {
                   $t.animate({"scrollTop": $('#msjes')[0].scrollHeight}, 0);
               }
             })
-  
-  
+
+
   });
+
+
+
+
+
 
   $('#chatearmodal').on('show.bs.modal', function(e) {
     var receptor = $(e.relatedTarget).data('perfil-id');
     var casting_id = $(e.relatedTarget).data('casting-id');
     $(e.currentTarget).find('#receptor_id').val(receptor);
     $(e.currentTarget).find('#casting_id').val(casting_id);
- 
+
     var id = $(e.relatedTarget).data('perfil-id');
-    
+
     $('#btn_'+id).removeClass("badge1");
 
     $("#videoenviar").attr("data-perfil-id",receptor);
@@ -784,17 +698,16 @@ $(document).on('click', '#videar', function() {
                     $t.animate({"scrollTop": $('#msjes')[0].scrollHeight}, 0);
                   }
               })
-          
-        timeout = setInterval(function(){ 
 
+        timeout = setInterval(function(){
         $.ajax({
                 url: "/obtener-chat/"+receptor+"/"+casting_id,
                 method: "get",
                 success:function(result)
                   {
-                    
+
                     $('#mensajes').html(result);
-                    
+
                   },
                   complete:function()
                   {
@@ -803,41 +716,22 @@ $(document).on('click', '#videar', function() {
                   }
                 });
 
-        }, 180000);
+        }, 10000);
 
 
   });
+
 
   $('#chatearmodal').on('hide.bs.modal', function(e) {
     $('#mensajillo').val('');
     clearInterval(timeout);
 });
 
-// $('#pagoModal').on('show.bs.modal', function(e) {
-//     // var dependent = $(e.relatedTarget).data('perfil-id');
-//     $.ajax({
-//            url: "/modal-pagos/"+proyectos->id,
-//            method: "post",
-//            data:{email,email},
-// 		    beforeSend: function(){
-//                         $('#mobodyMail').css("display", "block");
-//                         $('#mobodyMail').css("visibility", "visible");
-//                         $('#mobodyMail').html('<div class="loading" style="opacity: .9;"><img src="https://industria.ivotalents.com/img/loader.gif" alt="loading"  style="height: 35px;  width: 35px;" /><br/>Un momento, por favor...</div><br/>');
-//                         },
-//            success:function(result)
-//              {
-// 				 $('#mobodyMail').css("display", "none");
-//                $('#mobodyMail').css("visibility", "hidden");
-//               $('#enviarpormail').modal('toggle');
-//              }
-//           })
-
-// });
 
 $('#enviarpormail').on('show.bs.modal', function(e) {
     var dependent = $(e.relatedTarget).data('perfil-id');
     var _token = '{{csrf_token()}}';
-	$('#btnSubmit').attr("disabled", false);	
+	$('#btnSubmit').attr("disabled", false);
     $(e.currentTarget).find('#proyecto').val(dependent);
 });
 
@@ -845,7 +739,7 @@ $('#enviarpormail').on('show.bs.modal', function(e) {
 $('#enviarmensajes').on('show.bs.modal', function(e) {
     var dependent = $(e.relatedTarget).data('perfil-id');
     var _token = '{{csrf_token()}}';
-	$('#enviar_msj').attr("disabled", false);	
+	$('#enviar_msj').attr("disabled", false);
     $(e.currentTarget).find('#proyecto_msj').val(dependent);
 });
 
@@ -853,7 +747,7 @@ $('#enviarmensajes').on('show.bs.modal', function(e) {
 $('#descargarFotos').on('show.bs.modal', function(e) {
     var dependent = $(e.relatedTarget).data('perfil-id');
     var _token = '{{csrf_token()}}';
-	$('#bajar_foto').attr("disabled", false);	
+	$('#bajar_foto').attr("disabled", false);
   $(e.currentTarget).find('#proyecto_foto').val(dependent);
   $('#mobody').html('');
 });
@@ -863,7 +757,7 @@ $('#descargarFotos').on('show.bs.modal', function(e) {
 $('#enviar_mail').on('click', function(e) {
   var dependent = $('#proyecto').val();
   var email = $('#email').val();
-  $('#btnSubmit').attr("disabled", true);	
+  $('#btnSubmit').attr("disabled", true);
   $.ajax({
            url: "/enviar-proyecto-mail/"+dependent,
            method: "post",
@@ -888,7 +782,7 @@ $('#enviar_msj').on('click', function(e) {
   var dependent = $('#proyecto_msj').val();
   var msj = $('#msj').val();
   var titulo = $('#titulo').val();
-  $('#enviar_msj').attr("disabled", true);	
+  $('#enviar_msj').attr("disabled", true);
   $.ajax({
            url: "/enviar-proyecto-msj/"+dependent,
            method: "post",
@@ -898,7 +792,7 @@ $('#enviar_msj').on('click', function(e) {
                         $('#mobodyMsj').css("visibility", "visible");
                         $('#mobodyMsj').html('<div class="loading" style="opacity: .9;"><img src="https://industria.ivotalents.com/img/loader.gif" alt="loading"  style="height: 35px;  width: 35px;" /><br/>Un momento, por favor...</div><br/>');
                         },
-						
+
            success:function(result)
              {
 				  $('#mobodyMsj').css("display", "none");
@@ -913,7 +807,7 @@ $('#enviar_msj').on('click', function(e) {
 $('#bajar_foto').on('click', function(e) {
   var dependent = $('#proyecto_foto').val();
 
-  $('#bajar_foto').attr("disabled", true);	
+  $('#bajar_foto').attr("disabled", true);
   $.ajax({
            url: "/descargar-fotos/"+dependent,
            method: "get",
@@ -922,11 +816,11 @@ $('#bajar_foto').on('click', function(e) {
                         $('#mobody').css("visibility", "visible");
                         $('#mobody').html('<div class="loading" style="opacity: .9;"><img src="https://industria.ivotalents.com/img/loader.gif" alt="loading"  style="height: 35px;  width: 35px;" /><br/>Un momento, por favor...</div><br/>');
                         },
-						
+
            success:function(result)
              {
 				  $('#mobody').html(result);
-				  
+
               //$('#descargarFotos').modal('toggle');
              }
           })
@@ -938,9 +832,9 @@ $('#bajarpdf').on('click', function(e) {
     var _token = '{{csrf_token()}}';
    if(confirm('Desea descargar el Proyecto en PDF? Esto puede tardar un tiempo dependiendo de su conexion.')){
     $('#frmBajarPDF').submit();
-   } 
+   }
 
-    
+
 });
 
 
@@ -949,7 +843,7 @@ $('#cancelar').on('click', function(e) {
     var _token = '{{csrf_token()}}';
     $('#pagos').modal('hide');
     $('#planes').modal('show');
-    
+
 });
 
 
@@ -966,9 +860,9 @@ $.ajax({
                       $('#loader').css("visibility", "visible");
           $('#loader').html('<div class="loading" style="opacity: .9;"><img src="https://industria.ivotalents.com/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div><br/>');
             },
-            
+
             success:function(data) {
-              
+
               $('#resultados').fadeIn(1000).html(data);
 
             },
@@ -978,8 +872,8 @@ $.ajax({
                       $('#resultados').css("visibility", "visible");
                  });
 
-              
-              
+
+
             }
     });
 
@@ -992,9 +886,9 @@ $.ajax({
                       $('#loader').css("visibility", "visible");
           $('#loader').html('<div class="loading" style="opacity: .9;"><img src="https://industria.ivotalents.com/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div><br/>');
             },
-            
+
             success:function(data) {
-              
+
               $('#resultadosAceptado').fadeIn(1000).html(data);
 
             },
@@ -1004,8 +898,8 @@ $.ajax({
                       $('#resultadosAceptado').css("visibility", "visible");
                  });
 
-              
-              
+
+
             }
     });
 
@@ -1018,9 +912,9 @@ $.ajax({
                       $('#loader').css("visibility", "visible");
           $('#loader').html('<div class="loading" style="opacity: .9;"><img src="https://industria.ivotalents.com/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div><br/>');
             },
-            
+
             success:function(data) {
-              
+
               $('#resultadosRechazados').fadeIn(1000).html(data);
 
             },
@@ -1030,8 +924,8 @@ $.ajax({
                       $('#resultadosRechazados').css("visibility", "visible");
                  });
 
-              
-              
+
+
             }
     });
 });
@@ -1060,7 +954,7 @@ $('#btnVideoLink').click(function(e, parameters) {
      var mensajillo = $('#videolink').val();
      var id = $('#id_enviable').val();
      var casting_id = $('#casting_id').val();
-     
+
      $.ajax({
             headers: {
               'X-CSRF-Token': _token
@@ -1068,7 +962,7 @@ $('#btnVideoLink').click(function(e, parameters) {
            url: "/enviar-chat-video/"+id,
            method: "post",
            data:{mensajillo:mensajillo,casting_id:casting_id},
-            
+
            success:function(result)
              {
                $('#videolink').val('');

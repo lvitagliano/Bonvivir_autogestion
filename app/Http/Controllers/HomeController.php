@@ -64,18 +64,18 @@ class HomeController extends Controller
                                                                             'es_pasaporte' => $request->pasaporte_empresa,
                                                                             'usuario_id'  => $id,
                                                                             'industria_tipo_id'  => $request->tipo_rol_id]);
-            
-          
+
+
              $currentEmpresa->save();
-  
-  
+
+
               return redirect('/home')
               ->with('success','Los datos han sido modificados exitosamente.');
                }
                   else{
                       return redirect('/home');
-         } 
-        
+         }
+
     }
 
 
@@ -99,22 +99,22 @@ class HomeController extends Controller
              $currentEmpresa = IndustriaDatos::updateOrCreate(['usuario_id'  => $id
              ],['usuario_cargo' => $request->cargo_empresa
                 ,'usuario_id'  => $id]);
-            
-             $currentEmpresa->save(); 
+
+             $currentEmpresa->save();
 
              $currentRedes = CandidatoSocial::updateOrCreate(['usuario_id'  => $id
              ],['linkedin' => $request->linkedin_representante
                 ,'usuario_id'  => $id]);
-            
-             $currentEmpresa->save(); 
-  
+
+             $currentEmpresa->save();
+
               return redirect('/home')
               ->with('success','Los datos han sido modificados exitosamente.');
                }
                   else{
                       return redirect('/home');
-         } 
-        
+         }
+
     }
 
 
@@ -127,34 +127,34 @@ class HomeController extends Controller
              $currentuser = Users::find($id);
              $currentuser->acercademi = $request->Acercademi;
 
-             $currentuser->save(); 
-  
+             $currentuser->save();
+
               return redirect('/home')
               ->with('success','Los datos han sido modificados exitosamente.');
                }
                   else{
                       return redirect('/home');
-         } 
-        
+         }
+
     }
 
 
 
     public function index()
     {
-        $id = Auth::user()->id;             
-        $usuario = Users::find($id);       
+        $id = Auth::user()->id;
+        $usuario = Users::find($id);
         $paises = NomPaises::all()->sortBy('nombre');
         $telefonos = NomPaises::all()->sortBy('area_code');
-        
+
         $id_pais = $usuario->Industria->pais_id ? $usuario->Industria->pais_id  : 1;
         $pais = NomPaises::find($id_pais);
 
         if($pais){
-            $ciudades = NomCiudades::where('codigo_pais',$pais->codigo_pais)->orderBy('nombre')->get();  
+            $ciudades = NomCiudades::where('codigo_pais',$pais->codigo_pais)->orderBy('nombre')->get();
         }
         else{
-            $ciudades = NomCiudades::find(0);   
+            $ciudades = NomCiudades::find(0);
         }
         $proyectos = Castings::where('usuario_id', $id)->orderBy('id','DESC')->get();
         $rolestipos = NomIndustriaTipo::all();
@@ -164,16 +164,40 @@ class HomeController extends Controller
         return view('home',compact('usuario','paises','ciudades','proyectos','telefonos','rolestipos'));
     }
 
+    public function bienvenida()
+    {
+        $id = Auth::user()->id;
+        $usuario = Users::find($id);
+        $paises = NomPaises::all()->sortBy('nombre');
+        $telefonos = NomPaises::all()->sortBy('area_code');
+
+        $id_pais = $usuario->Industria->pais_id ? $usuario->Industria->pais_id  : 1;
+        $pais = NomPaises::find($id_pais);
+
+        if($pais){
+            $ciudades = NomCiudades::where('codigo_pais',$pais->codigo_pais)->orderBy('nombre')->get();
+        }
+        else{
+            $ciudades = NomCiudades::find(0);
+        }
+        $proyectos = Castings::where('usuario_id', $id)->orderBy('id','DESC')->get();
+        $rolestipos = NomIndustriaTipo::all();
+
+        $countries = new Countries();
+
+        return view('bienvenida',compact('usuario','paises','ciudades','proyectos','telefonos','rolestipos'));
+    }
+
 
 
 
     public function homeTalentosInicial()
     {
 
-      
-        $id = Auth::user()->id;      
+
+        $id = Auth::user()->id;
         $talentos =  Users::whereNotNull('avatar')->whereHas('Talentos.Talento1')->orderBy('id', 'DESC')->Take(5)->get();
-        
+
        $proyectos = Castings::where('usuario_id', $id)->get();
         return view('partials._homelistatalentos',compact('talentos','proyectos'));
     }
@@ -187,40 +211,40 @@ class HomeController extends Controller
      if(Auth::user()){
             $id = Auth::user()->id;
 
-           
+
             $currentuser = Users::find($id);
 
             if($currentuser->avatar){
-                $porciones = explode("ivotalent", $currentuser->avatar);  
+                $porciones = explode("ivotalent", $currentuser->avatar);
 
                 $complete = $porciones[1];
-          
+
                 if(Storage::disk('s3')->exists($complete)) {
                      $t = Storage::disk('s3')->delete($complete);
                  }
-   
+
                 $complete = '/files/thumbs/profile/'.$currentuser->id.'/'.'540px_foto_'.$currentuser->id;
-             
+
                 if(Storage::disk('s3')->exists($complete)) {
                       $t = Storage::disk('s3')->delete($complete);
                  }
-   
+
                 $complete = '/files/thumbs/profile/'.$currentuser->id.'/'.'90px_foto_'.$currentuser->id;
                 if(Storage::disk('s3')->exists($complete)) {
                       $t = Storage::disk('s3')->delete($complete);
                  }
-   
+
                 $complete = '/files/thumbs/profile/'.$currentuser->id.'/'.'250px_foto_'.$currentuser->id;
                 if(Storage::disk('s3')->exists($complete)) {
                       $t = Storage::disk('s3')->delete($complete);
                  }
-   
 
-                
+
+
             }
 
         $image = $request->image;
-       
+
         list($type, $image) = explode(';', $image);
 
         list(, $image)      = explode(',', $image);
@@ -235,39 +259,39 @@ class HomeController extends Controller
         //$path = public_path().'/temp/'.$imageName;
 
         //file_put_contents($path, $image);
-        
-        
+
+
         $t = Storage::disk('s3')->put($complete, $image, 'public');
         $complete = Storage::disk('s3')->url($complete);
 
-        
+
 
         $path = 'https://s3.us-east-2.amazonaws.com/ivotalent'.'/files/profile/'.$id.'/'.$imageName;
-        
- 
+
+
          $img = Image::make($path);
 
          $img->resize(540, null, function ($constraint) {
              $constraint->aspectRatio();
              $constraint->upsize();
          });
- 
+
          //$img->save(public_path('//thumbnails/images/'.$fotes->usuario_id.'/540px_'.$fotes->usuario_id. $filename, 100));
          $resource = $img->stream();
          $complete = '/files/thumbs/profile/'.$id.'/'.'540px_foto_'.$id.'.png';
          $t = Storage::disk('s3')->put($complete, $resource, 'public');
-      
 
- 
+
+
           $complete = '/files/profile/'.$id.'/'.$imageName;
 
 
 
-          $bucketname = "ivotalent"; 
+          $bucketname = "ivotalent";
 
-         
+
           $currentuser->avatar =  'https://s3.us-east-2.amazonaws.com/'.$bucketname.$complete ;
-          $currentuser->save(); 
+          $currentuser->save();
 
 
                     return  redirect('/home')
@@ -291,10 +315,10 @@ class HomeController extends Controller
                                                                             'usuario_id' => $id]);
 
              $currentEmpresa->save();
-   
+
               return redirect('/home')
               ->with('success','Los datos han sido modificados exitosamente.');
-    
+
     }
 
 }
