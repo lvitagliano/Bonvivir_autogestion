@@ -141,15 +141,12 @@
   opacity: .5;
   cursor: pointer;
 }
-<<<<<<< HEAD
 .text-azul {
   color: #65caf8;
 }
  .message-in.text-azul {
   color: #65caf8;
 }
-=======
->>>>>>> 94682f571f6d4dc565b9445eca10827e03a5f04c
 @media screen and (max-width: 735px) {
    .message-input .wrap .attachment {
     margin-top: 17px;
@@ -184,7 +181,6 @@
 small {
   font-size: 10px;
 }
-<<<<<<< HEAD
 
 #selectPlan {
   display: none;
@@ -204,7 +200,7 @@ hr.new4 {
   justify-content: center;
 }
 .circularBtn {
-  width: 70%;
+  width: 56%;
   border: 2px solid rgb(200, 198, 198);  
   border-radius: 50%;
   margin-top: -90px;
@@ -234,8 +230,6 @@ hr.new4 {
   background-repeat: no-repeat;
   background-size: 120% 100%;
 }
-=======
->>>>>>> 94682f571f6d4dc565b9445eca10827e03a5f04c
 </style>
 <div class="page-header" data-parallax="true" style="background-image: url('../assets/img/city-profile-two.jpg'); height: 240px;">
     <div class="col-7 ml-auto text-left align-items-end c-name"><h3 style="color: white" class="c-mini-name">
@@ -325,6 +319,12 @@ hr.new4 {
             data-target="#descargarFotos">
               <i style="font-size: 30px;margin-top:-15px" class="material-icons">cloud_download</i>
           </button>
+
+          <button class="btn btn-primary btn-link"   style="padding: 5px 10px 5px 0px;" alt="Descargar Imagenes de Seleccionados"
+          data-toggle="modal" data-perfil-id="{{$proyectos->id}}"
+              data-target="#pagoModal">
+                <i style="font-size: 30px;margin-top:-15px" class="material-icons">cloud_download</i>
+            </button>
 
           <button class="btn btn-link  @if($proyectos->seleccion_finalizada == 0)
               btn-link  btn-disabled @else  btn-primary @endif" style="padding: 5px 10px 5px 0px;"
@@ -456,8 +456,13 @@ $uid = md5(uniqid(rand(), true));
                 <div class="card card-signup card-plain" style="padding:0px">
                       <div class="modal-body" style="padding:0px" id="mbody">
 
-<<<<<<< HEAD
-<!-- small modal -->
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!--  End Modal -->
+          <!-- small modal -->
 <div class="modal fade" id="pagoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg ">
     <div class="modal-content" >
@@ -468,7 +473,6 @@ $uid = md5(uniqid(rand(), true));
   
       
             <div class="container ">
-              <h3>Planes Vigentes</h3>
               <div class="row">          
               <div class="content pepe" style="width: 100%;" >
                 <div style="width: 340px">
@@ -476,13 +480,12 @@ $uid = md5(uniqid(rand(), true));
                     <div class="card-content">
                     <div class="imgPrice" style="margin-left:-12px; height: 140px;">
                      <div><h6 class="category colorHead" style="margin-top: -14px;">------</h6>
-                     
                     </div> 
                     </div>
                       <h2 class="category text-gray"></h2>
                       <div class="content pepe">
                       <div class="circularBtn">
-                      <h1 class="cardT">{{$planes[0]->descripcion}}</h1>
+                      <h3 class="cardT">{{$planes[0]->descripcion}}</h3>
                     </div>
                   </div>
                       <ul class="mb-4 mt-3">
@@ -498,9 +501,7 @@ $uid = md5(uniqid(rand(), true));
                       </a>
                     </div>
                   </div>
-=======
                       </div>
->>>>>>> 94682f571f6d4dc565b9445eca10827e03a5f04c
                 </div>
             </div>
         </div>
@@ -832,7 +833,6 @@ $(document).on('click', '#videar', function() {
     clearInterval(timeout);
 });
 
-<<<<<<< HEAD
 // $('#pagoModal').on('show.bs.modal', function(e) {
 //     // var dependent = $(e.relatedTarget).data('perfil-id');
 //     $.ajax({
@@ -866,8 +866,6 @@ $(document).on('click', '#videar', function() {
 //           })
 
 // });
-=======
->>>>>>> 94682f571f6d4dc565b9445eca10827e03a5f04c
 
 $('#enviarpormail').on('show.bs.modal', function(e) {
     var dependent = $(e.relatedTarget).data('perfil-id');
