@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Planes;
 use App\Models\Admin\Pago_planes;
-use App\Models\Admin\Planes_Items;
 use App\Models\Admin\Plan_configurable;
 
 use App\Mail\NotificarProyecto;
@@ -45,6 +44,7 @@ class planesController extends Controller
         ->first();
     return view('planes',compact('usuario', 'planes', 'pago'));
     }
+<<<<<<< HEAD
     
     public function pagos(Request $request) {
         $id = Auth::user()->id;  
@@ -56,6 +56,9 @@ class planesController extends Controller
         return view('pagos',compact('usuario', 'planes', 'planes_items', 'idProj'));
     }   
     
+=======
+
+>>>>>>> 94682f571f6d4dc565b9445eca10827e03a5f04c
     public function compras()
     {
         $id = Auth::user()->id;
@@ -101,13 +104,21 @@ class planesController extends Controller
                 $Pago->save();
                 $laImagen = 'https://ivotalent.s3.us-east-2.amazonaws.com/'.$upload;
                 $usuario = Users::find($id);
-               // Mail::to('lukasvitagliano@gmail.com')->send(new NotificarTransferencia($usuario, $laImagen));
+                Mail::to('lukasvitagliano@gmail.com')->send(new NotificarTransferencia($usuario, $laImagen));
 
+<<<<<<< HEAD
                return redirect('/unproyecto/'.$request->project)
               ->with('success','Los datos han sido modificados exitosamente.');
                }
                   else{
                     return redirect('/unproyecto/'.$request->project);
+=======
+              return redirect('/mis-proyectos')
+              ->with('success','Los datos han sido modificados exitosamente.');
+               }
+                  else{
+                      return redirect('/planes');
+>>>>>>> 94682f571f6d4dc565b9445eca10827e03a5f04c
 
          }
 

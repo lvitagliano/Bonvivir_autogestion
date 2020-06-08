@@ -141,12 +141,15 @@
   opacity: .5;
   cursor: pointer;
 }
+<<<<<<< HEAD
 .text-azul {
   color: #65caf8;
 }
  .message-in.text-azul {
   color: #65caf8;
 }
+=======
+>>>>>>> 94682f571f6d4dc565b9445eca10827e03a5f04c
 @media screen and (max-width: 735px) {
    .message-input .wrap .attachment {
     margin-top: 17px;
@@ -181,6 +184,7 @@
 small {
   font-size: 10px;
 }
+<<<<<<< HEAD
 
 #selectPlan {
   display: none;
@@ -230,6 +234,8 @@ hr.new4 {
   background-repeat: no-repeat;
   background-size: 120% 100%;
 }
+=======
+>>>>>>> 94682f571f6d4dc565b9445eca10827e03a5f04c
 </style>
 <div class="page-header" data-parallax="true" style="background-image: url('../assets/img/city-profile-two.jpg'); height: 240px;">
     <div class="col-7 ml-auto text-left align-items-end c-name"><h3 style="color: white" class="c-mini-name">
@@ -450,6 +456,7 @@ $uid = md5(uniqid(rand(), true));
                 <div class="card card-signup card-plain" style="padding:0px">
                       <div class="modal-body" style="padding:0px" id="mbody">
 
+<<<<<<< HEAD
 <!-- small modal -->
 <div class="modal fade" id="pagoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg ">
@@ -491,6 +498,9 @@ $uid = md5(uniqid(rand(), true));
                       </a>
                     </div>
                   </div>
+=======
+                      </div>
+>>>>>>> 94682f571f6d4dc565b9445eca10827e03a5f04c
                 </div>
             </div>
         </div>
@@ -822,6 +832,7 @@ $(document).on('click', '#videar', function() {
     clearInterval(timeout);
 });
 
+<<<<<<< HEAD
 // $('#pagoModal').on('show.bs.modal', function(e) {
 //     // var dependent = $(e.relatedTarget).data('perfil-id');
 //     $.ajax({
@@ -855,6 +866,8 @@ $(document).on('click', '#videar', function() {
 //           })
 
 // });
+=======
+>>>>>>> 94682f571f6d4dc565b9445eca10827e03a5f04c
 
 $('#enviarpormail').on('show.bs.modal', function(e) {
     var dependent = $(e.relatedTarget).data('perfil-id');
