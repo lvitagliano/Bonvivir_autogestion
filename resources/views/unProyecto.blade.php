@@ -506,6 +506,9 @@ $uid = md5(uniqid(rand(), true));
             </div>
         </div>
     </div>
+   </div>
+  </div>
+</div>
     <!--  End Modal -->
 
 
