@@ -30,7 +30,7 @@
 <div class="page-header" data-parallax="true" style="background-image: url('../assets/img/city-profile-two.jpg'); height: 240px;">
     <div class="col-7 ml-auto text-left align-items-end c-name"><h3 style="color: white" class="c-mini-name">
     <b>{{$usuario->industria->razon_social ? strtoupper($usuario->industria->razon_social) : "Nombre de la Empresa" }}</b>&nbsp;
-          <a href="#" data-toggle="modal" data-target="#NombreEmpresa"><i class="material-icons" style="font-size:14px; cursor: pointer;color:white">border_color</i></a></h3>
+          <a href="/datos" style="font-size: 12px;color: white">(Cambiar mis datos)</a></h3>
              <p style="margin-top: -15px;margin-bottom: 0px; font-size: 13px; color:white" class="c-mini-subname">
              {{$usuario->industria->slogan ? strtoupper($usuario->industria->slogan) : "Slogan de la Empresa.." }}</p></div>
 </div>
@@ -65,8 +65,7 @@
                         </a>
                       </li>
                       <li class="list-horizontal">
-                              <a class="btn-nav btn btn-animation-blue" style="color: #ffffff;background-color:#1f8089"
-                              href="#" data-toggle="modal" data-target="#CrearProyecto">
+                              <a class="btn-nav btn btn-animation-blue" style="color: #ffffff;background-color:#1f8089" href="#" data-toggle="modal" data-target="#CrearProyecto">
                                 <i class="material-icons">assignment</i> Crear Proyecto
                               </a>
                             </li>
@@ -82,153 +81,69 @@
       </div>
 
 
-
-
-      <div class="row" style="margin-top: -30px">
-        <div class="col-md-3 ml-auto mr-auto">
-         <div class="col-12"><h4 style="color: #1f8089"><b>NUEVOS TALENTOS</b></h4></div>
-
-         <div class="loader" id="loader"></div>
-          <div class="media-area" id="listatalentos" style="visibility:hidden;">
-
+      <div class="features-4" style="padding-top: 0px;margin-top: -100px;padding-bottom: 288px">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto text-center">
+            <h2 class="title">Bienvenido a ivotalents</h2>
+            <h5 class="description">Siguiendo estos 4 simples pasos podrás tener un proyexto totalmente funcional con los talentos que tu mismo hayas seleccionado.</h5>
           </div>
         </div>
-
-        <div class="col-md-3 ml-auto mr-auto">
-           <div class="row">
-            <div class="col-6 ml-4"><h4 style="color: #1f8089"><b>EMPRESA</b></h4>
-                </div>
-                <div class="col-5  mt-3 text-right">
-                    <button class="btn btn-primary btn-link" data-toggle="modal" data-target="#AcercaDeMi">
-                        <i class="material-icons">border_color</i>
-                    </button>
-                </div>
-            </div>
-          <div class="card card-pricing" style="text-align: left;margin-top:5px">
-                  <div class="card-body">
-                    <ul>
-                       <li>
-                        <b>Tipo:</b><br>{{$usuario->Industria->Tipo->nombre}}</li>
-                      <li>
-                        <b>Ubicación:</b><br>{{$usuario->Industria->Pais->nombre}},
-                        {{$usuario->Industria->Ciudad->nombre}}</li>
-                      <li>
-                        <b>Web Site:</b><br>{{$usuario->Industria->sitio_web ? $usuario->Industria->sitio_web : "http://www.dominio.com "}}</li>
-                      <li>
-                        <b>E-Mails:</b><br>{{$usuario->Industria->email1 ? $usuario->Industria->email1 : "correo@dominio.com "}}</li>
-                      <li>
-                        <b>Número de Contacto:</b><br>{{$usuario->Industria->telefono1  ? $usuario->Industria->codigo_area1." ".$usuario->Industria->telefono1 : " +507 0000.0000"}}
-                    </li>
-                    <li>
-                      <b>Razón Social:</b><br>{{$usuario->Industria->razon_social ? $usuario->Industria->razon_social  : "RAZÓN SOCIAL"}}
-                  </li>
-                  <li>
-                    <b>{{$usuario->Industria->es_ruc ? "RUC" : ""}}{{$usuario->Industria->es_rif ? "/RIF" : ""}}{{$usuario->Industria->es_cedula ? "/CEDULA" : ""}}{{$usuario->Industria->es_pasaporte ? "/PASAPORTE" : ""}}:</b><br>{{$usuario->Industria->ruc ? $usuario->Industria->ruc : "000000000"}}
-                </li>
-                    </ul>
-                  </div>
-        </div>
-
-        </div>
-
-         <div class="col-md-3 ml-auto mr-auto">
-                <div class="row">
-                        <div class="col-6 ml-4"><h4 style="color: #1f8089"><b>ADMINISTRADOR</b></h4>
-                            </div>
-                            <div class="col-5  mt-3 text-right">
-                                <button class="btn btn-primary btn-link" data-toggle="modal" data-target="#Representante">
-                                    <i class="material-icons">border_color</i>
-                                </button>
-                            </div>
-                        </div>
-              <div class="card card-pricing" style="margin-top:5px">
-                  <div class="card-body">
-                    <ul>
-                      <li>
-                        <b>Nombre Completo:</b><br> {{$usuario->nombre ? $usuario->nombre : $usuario->name}}</li>
-                      <li>
-                        <b>Cargo en la Empresa:</b><br> {{$usuario->Industria->usuario_cargo ? $usuario->Industria->usuario_cargo : "Cargo en la empresa"}}</li>
-                        <li>
-                        <b>Números de Contacto:</b><br> {{$usuario->telefono ? $usuario->codigo_area." ".$usuario->telefono : " +507 0000.0000"}}
-                                                   <br> {{$usuario->telefono2 ? $usuario->codigo_area2." ".$usuario->telefono2: " +507 0000.0000"}}</li>
-                      <li>
-                        <b>E-Mail:</b><br> {{$usuario->email ? $usuario->email : "correo@dominio.com"}}</li>
-                      <li>
-                        <b>Perfil de Linkedin:</b><br> {{$usuario->Social->linkedin ? $usuario->Social->linkedin : "Linkedin"}} </li>
-                      <li>
-                        <b></b><br></li>
-                    </ul>
-                  </div>
-                </div>
-
-        </div>
-
-        <div class="col-md-3 ml-auto mr-auto">
-            <div class="row">
-                    <div class="col-6 ml-4"><h4 style="color: #1f8089"><b>GUIA DE USO</b></h4>
-                        </div>
-                    </div>
-          <div class="card card-pricing" style="margin-top:5px">
-              <div class="card-body">
-                <ul style="max-width: 100%">
-                  <li>
-                    <div class="description">
-                        <h4 class="info-title" style="margin:0px; text-align: left">1-Crea tu proyecto.- <a href="#"  data-toggle="modal" data-target="#CrearProyecto"><img src="{{ asset('img/pasos/1.png') }}" style="height: 22px"></a></h4>
-                        <p style="text-align: left">Llena el formulario con todas las indicaciones de tu proyecto.
-                            Tienes esta opción disponible en tu perfil, en el buscador y en mis proyectos.<br>
-                            <b>Nota:</b> Está información la verá cada talento que invites a tu proyecto.
-                             </p>
-                      </div>
-                    <li>
-                        <div class="description">
-                            <h4 class="info-title" style="margin:0px;text-align: left">2-Busca a tus Talentos.-  <a href="/buscar"><img src="{{ asset('img/pasos/2.png') }}" style="height: 22px"></a></h4>
-                            <p style="text-align: left"> <b>a) Filtra</b> por búsqueda avanzada seleccionando las características del talento que necesitas.<br>
-                                <b>b) Elige e invita</b> a todas las opciones de talentos necesarios al proyecto que acabas de crear en el <b>Paso 1</b>.
-                                </p>
-                          </div>
-                    </li>
-                        <div class="description">
-                            <h4 class="info-title" style="margin:0px;text-align: left">3-Visualiza, Comparte y Conecta.-  <a href="/mis-proyectos"><img src="{{ asset('img/pasos/3.png') }}" style="height: 22px"></a></h4>
-                            <p style="text-align: left"> <b>a) Visualiza todos los talentos</b> que están disponibles dentro de tu proyecto donde dice  <img src="{{ asset('img/pasos/4.png') }}" style="height: 22px"><br>
-                                <b>b) Comparte el link</b> con todos los perfiles que aceptaron con tu equipo o cliente. <img src="{{ asset('img/pasos/5.png') }}" style="height: 22px"><br>
-                                <b>c)</b> Para <b>completar tu proceso de “casting online”</b> realiza el pago por el servicio automatizado.<br>
-                                <b>d) Conecta por mensajería</b> y haz tu casting online por video llamada con todos los talentos que aceptaron tu proyecto. <img src="{{ asset('img/pasos/6.png') }}" style="height: 22px">
-                                </p>
-                          </div>
-                        </li>
-                  <li>
-                    <b></b><br></li>
-                </ul>
+        <div class="row">
+          <div class="col-lg-3 col-md-12 ml-auto">
+            <div class="info info-horizontal">
+              <div class="icon icon-info">
+                <i class="material-icons">filter_1</i>
+              </div>
+              <div class="description">
+                <h4 class="info-title" style="margin:0px">Crea tu proyecto  <img src="{{ asset('img/pasos/1.png') }}" style="height: 22px"></h4>
+                <p>Llena el formulario con todas las indicaciones de tu proyecto.
+                    Tienes esta opción disponible en tu perfil, en el buscador y en mis proyectos.<br>
+                    <b>Nota:</b> Está información la verá cada talento que invites a tu proyecto.
+                     </p>
               </div>
             </div>
+            <div class="info info-horizontal">
+              <div class="icon icon-danger">
+                <i class="material-icons">filter_3</i>
+              </div>
+              <div class="description">
+                <h4 class="info-title" style="margin:0px">Visualiza y Comparte <img src="{{ asset('img/pasos/3.png') }}" style="height: 22px"></h4>
+                <p> <b>a) Visualiza todos los talentos</b> que están disponibles dentro de tu proyecto donde dice  <img src="{{ asset('img/pasos/4.png') }}" style="height: 22px"><br>
+                    <b>b) Comparte el link</b> con todos los perfiles que aceptaron con tu equipo o cliente. <img src="{{ asset('img/pasos/5.png') }}" style="height: 22px">
 
-    </div>
-
-      </div>
-
-
-      <div class="row">
-        <div class="col-md-4 ml-auto mr-auto">
-        </div>
-
-         <div class="col-md-8 ml-auto mr-auto">
-                <div class="row">
-                        <div class="col-6 ml-4"><h4 class="descrip-blanco"><b>DESCRIPCIÓN</b></h4>
-                            </div>
-                            <div class="col-5 text-right">
-                                <button class="btn btn-primary btn-link" data-toggle="modal" data-target="#Descripcion">
-                                    <i class="material-icons icon-blanco">border_color</i>
-                                </button>
-                            </div>
-                        </div>
-
-
-              <div class="card card-pricing" style="margin-top:5px">
-                  <div class="card-body">
-                    <p>{{$usuario->acercademi ? $usuario->acercademi : "Descripción de la Empresa..."}}</p>
-                  </div>
-                </div>
-
+                    </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12">
+            <div class="phone-container">
+              <img src="{{ asset('img/pasos/back-slider-1.png') }}">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-12 mr-auto">
+            <div class="info info-horizontal">
+              <div class="icon icon-primary">
+                <i class="material-icons">filter_2</i>
+              </div>
+              <div class="description">
+                <h4 class="info-title" style="margin:0px">Busca a tus Talentos <img src="{{ asset('img/pasos/2.png') }}" style="height: 22px"></h4>
+                <p> <b>a) Filtra</b> por búsqueda avanzada seleccionando las características del talento que necesitas.<br>
+                    <b>b) Elige e invita</b> a todas las opciones de talentos necesarios al proyecto que acabas de crear en el <b>Paso 1</b>.
+                    </p>
+              </div>
+            </div>
+            <div class="info info-horizontal">
+              <div class="icon icon-success">
+                <i class="material-icons">filter_4</i>
+              </div>
+              <div class="description">
+                <h4 class="info-title" style="margin:0px">Completa y Conecta</h4>
+                <p> <b>a)</b> Para <b>completar tu proceso de “casting online”</b> realiza el pago por el servicio automatizado.<br>
+                    <b>b) Conecta por mensajería</b> y haz tu casting online por video llamada con todos los talentos que aceptaron tu proyecto. <img src="{{ asset('img/pasos/6.png') }}" style="height: 22px">
+                    </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1376,4 +1291,3 @@ $(document).ready(function() {
 
 
 @endsection
-
