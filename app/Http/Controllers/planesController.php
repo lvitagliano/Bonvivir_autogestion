@@ -84,7 +84,6 @@ class planesController extends Controller
 
     public function guardarPago(Request $request)
     {
-
         if(Auth::user()){
              $id = Auth::user()->id;
              $Pago = new Pago_planes;
@@ -93,8 +92,10 @@ class planesController extends Controller
              $upload = Storage::disk('s3')->put($complete, $file, 'public');
 
                 $Pago->id_usuario =  $id;
-                $Pago->id_plan =  $request->idPlanPago;
+                $Pago->id_plan =  $request->id_plan;
                 $Pago->tipo_pago = $request->tipo_pago;
+                $Pago->monto = $request->monto;
+                $Pago->id_proyecto = $request->project;
                 $Pago->imagen_pago = 'https://ivotalent.s3.us-east-2.amazonaws.com/'.$upload;
                 $Pago->activo =  1;
                 $Pago->Activado =  0;

@@ -122,7 +122,7 @@ hr.new4 {
                             <div >
             
                               <div id="Pedido" >
-                              <h1>Tu pedido {{ $idProj }}</h1>
+                              <h1>Tu pedido</h1>
                                <div class="circularBtn col-12 align-content-center">
                                 <div>
                                   <div>
@@ -146,15 +146,14 @@ hr.new4 {
                                 <br />
                                 <select class="selectpicker"  data-live-search="true"  id="tipo_pago" name="tipo_pago" data-style="select-with-transition form-control; color:#A1A1A1;width:80%" 
                                   title="TIPO DE PAGO" data-size="5">
-                                       <option disabled> TIPO DE PAGO</option>
+                                       <option disabled value=''> TIPO DE PAGO</option>
                                        <option value="Transferencia">Transferencia Bancaria</option>
-                                       <option value="Otros" disabled>Otros Pagos</option>
                                    </select>
                         </div>
 
                   
                                 <br />
-                                <button onclick="functionHidde()" class="btn btn-primary btn-round mb-3" role="tab" data-toggle="tab">
+                  <button onclick="functionHidde()" id="continuo_pago" name="continuo_pago" disabled class="btn btn-primary btn-round mb-3">
                                   Continuar pedido
                                 </button>
                                 <br /><br /><br /><br /><br />
@@ -189,6 +188,8 @@ hr.new4 {
                                   </div>
                                 </div>
                                 <input type="text" name="project" id="project" value={{$idProj}} hidden>
+                                <input type="text" name="monto" id="monto" value={{$planes[0]->monto}} hidden>
+                                <input type="text" name="id_plan" id="id_plan" value={{$planes[0]->id}} hidden>
                                 <br />
                                 <button  type="submit" class="btn btn-primary btn-round mb-3" id="pedido" name="pedido" >
                                   Realizar pago
@@ -258,10 +259,18 @@ function functionHidde() {
     x.style.display = "none";
     y.style.display = "block";
   }
-
-
-
 }
+
+$(document).ready(function(){
+    $('#tipo_pago').change(function(){
+        var val = $('#tipo_pago').val();
+        if (val == '') {
+            $('#continuo_pago').attr('disabled', 'disabled');
+        }else{
+            $('#continuo_pago').removeAttr('disabled');
+        }
+    });
+});
 
 
 </script>
