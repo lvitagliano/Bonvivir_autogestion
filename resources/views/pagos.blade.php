@@ -57,6 +57,9 @@ hr.new4 {
 hr.new4 {
   border: 1px solid rgb(194, 194, 194);
 }
+.alert-type {
+  color: rgb(241, 0, 0);
+}
 
   </style>
 
@@ -153,7 +156,8 @@ hr.new4 {
 
                   
                                 <br />
-                  <button onclick="functionHidde()" id="continuo_pago" name="continuo_pago" disabled class="btn btn-primary btn-round mb-3">
+                                <span id="alert_pago" name="alert_pago" class="alert-type">Debe elegir un tipo de pago</span><br />
+                  <button onclick="functionHidde()" disabled id="continuo_pago"  role="tab" data-toggle="tab" name="continuo_pago" class="btn btn-primary btn-round mb-3">
                                   Continuar pedido
                                 </button>
                                 <br /><br /><br /><br /><br />
@@ -191,11 +195,12 @@ hr.new4 {
                                 <input type="text" name="monto" id="monto" value={{$planes[0]->monto}} hidden>
                                 <input type="text" name="id_plan" id="id_plan" value={{$planes[0]->id}} hidden>
                                 <br />
-                                <button  type="submit" class="btn btn-primary btn-round mb-3" id="pedido" name="pedido" >
+                                <span id="alert_comprobante" name="alert_comprobante" class="alert-type">Debe adjuntar comprobante</span><br />
+                                <button disabled type="submit"  class="btn btn-primary btn-round mb-3" id="pedido" name="pedido" >
                                   Realizar pago
+                                  
                                 </button>
                                 <br />
-
                                 <hr class="new4">
                     
                                 <h4 align="center">
@@ -249,6 +254,7 @@ hr.new4 {
 
 <script type="text/javascript">
 
+
 function functionHidde() {
   var x = document.getElementById("Transferencia");
   var y = document.getElementById("Pedido");
@@ -263,14 +269,32 @@ function functionHidde() {
 
 $(document).ready(function(){
     $('#tipo_pago').change(function(){
+      var y = document.getElementById("alert_pago");
         var val = $('#tipo_pago').val();
         if (val == '') {
+          y.style.display = "block";
             $('#continuo_pago').attr('disabled', 'disabled');
         }else{
+          y.style.display = "none";
             $('#continuo_pago').removeAttr('disabled');
         }
     });
 });
+
+$(document).ready(function(){
+  $('#imagebanco').change(function(){
+  var x = document.getElementById("imagebanco");
+  var y = document.getElementById("alert_comprobante");
+  if (x.value === '') {
+    y.style.display = "block";
+    $('#pedido').attr('disabled', 'disabled');
+  } else {
+    y.style.display = "none";
+    $('#pedido').removeAttr('disabled');
+  }
+});
+});
+
 
 
 </script>
