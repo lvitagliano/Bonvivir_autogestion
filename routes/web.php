@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth','verificartalento','verificaradmin']], fun
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/bienvenida', 'HomeController@bienvenida')->name('bienvenida');
 Route::get('/mis-talentos', 'MisTalentosController@index')->name('mistalentos');
 Route::get('/buscar', 'BuscarController@index')->name('buscar');
 Route::any('/mis-proyectos', 'MisProyectosController@index')->name('misproyectos');
@@ -93,6 +94,8 @@ Route::get('/planes/{name?}', 'planesController@planes')->name('planes');
 Route::resource('/planConfigurableIndustria', 'planes\planController')->middleware('auth');
 Route::resource('/pagosPlanes', 'planes\pagosController')->middleware('auth');
 Route::resource('/listarPagosPlanes', 'planes\pagosActivosController')->middleware('auth');
+Route::get('/pagos/{id}', 'planesController@pagos')->name('pagos');
+Route::post('/guardarPago', 'planesController@guardarPago')->name('guardarPago');
 
 Route::get('/descargar-fotos/{id}', 'MisProyectosController@descargarFotos')->name('descargarFotos');
 

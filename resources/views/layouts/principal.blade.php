@@ -70,7 +70,7 @@
 </head>
 
 <body class="profile-page sidebar-collapse">
-  
+
   <nav class="navbar fixed-top navbar-expand-lg" id="sectionsNav">
     <div class="container">
       <div id="ivo-logo-head2" class="headAmplio">
@@ -91,7 +91,7 @@
       </div>
       <div class="collapse navbar-collapse" style="display: flex!important;" >
             <ul class="navbar-nav" style="flex-direction: column; width:100%;margin-top:-40vh">
-               
+
                     <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">
                              Perfil
@@ -117,20 +117,20 @@
                             Cerrar Sesión
                           </a>
                         </li>
-                   
+
                   </ul>
       </div>
     </div>
   </nav>
- 
+
   <div class="spinner-wrapper">
     <div class="spinner">
-        </div>    
+        </div>
       </div>
       <div id="app">
           @yield('content')
         </div>
- 
+
 
 
   <footer class="footer footer-default">
@@ -165,7 +165,7 @@
     </div>
   </footer>
     <!--   Core JS Files   -->
-    
+
       <!--   Core JS Files   -->
   <script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/js/core/bootstrap-material-design.min.js') }}" type="text/javascript"></script>
@@ -187,7 +187,7 @@
     <script async="" defer="" src="{{ asset('assets/js/cdn/buttons.js') }}"></script>
 	<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
     <script src="{{ asset('assets/js/plugins/jquery.sharrre.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/js/plugins/bootstrap-selectpicker.js') }}" type="text/javascript"></script>    
+    <script src="{{ asset('assets/js/plugins/bootstrap-selectpicker.js') }}" type="text/javascript"></script>
 	<!--	Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/  -->
 	<script src="{{ asset('assets/js/bootstrap-tagsinput.js') }}"></script>
 
@@ -200,7 +200,7 @@
   <script src="{{ asset('assets/assets-for-demo/vertical-nav.js') }}" type="text/javascript"></script>
 
 
-  
+
   <script src="{{ asset('assets/demo/demo.js') }}" type="text/javascript"></script>
 
   <script src="{{ asset('assets/js/material-kit.min.js') }}" type="text/javascript"></script>
@@ -257,7 +257,7 @@ $('select[id="pais"]').on('change', function(){
 
 
 
-</script>    
+</script>
 
 
 @yield('scripts')
