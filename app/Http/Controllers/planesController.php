@@ -84,12 +84,14 @@ class planesController extends Controller
 
     public function guardarPago(Request $request)
     {
+       
         if(Auth::user()){
              $id = Auth::user()->id;
              $Pago = new Pago_planes;
-             $file = $request->imagebanco;
-             $complete = '/files/comprobantes/'.$id;
-             $upload = Storage::disk('s3')->put($complete, $file, 'public');
+             $file = $request->file('imagebanco');
+             $nameImg = time().'.png';
+             $complete = '/files/comprobantes/'.$id.'/'.$nameImg;
+             $upload = Storage::disk('s3')->put($complete, file_get_contents($file), 'public');
 
                 $Pago->id_usuario =  $id;
                 $Pago->id_plan =  $request->id_plan;
