@@ -72,7 +72,7 @@ Route::get('/pagar', 'PagarController@index')->name('pagar');
 
 Route::post('/generarpdf/{id}','unProyectoController@generatepdf')->name('generatepdf');
 Route::get('/seleccionar/{id}','unProyectoController@seleccionar')->name('seleccionar');
-
+Route::post('/confirmar-seleccion/{id}','unProyectoController@confirmarseleccion')->name('confirmarseleccion');
 
 Route::get('/perfiltalentoseleccionado/{id}', 'unProyectoController@perfiltalentoselec')->name('perfiltalentoseleccionado');
 

@@ -556,6 +556,15 @@ class unProyectoController extends Controller
         return view('modals._modalVideo', compact('id'));
     }
 
+    public function confirmarseleccion($id)
+    {
+        $proyectos = CastingsSeleccionados::find($id);
+        $proyectos->seleccionado_final = 1;
+        $proyectos->Save();
+        return redirect('/unproyecto/349');
+    }
+    
+
 
 
 }

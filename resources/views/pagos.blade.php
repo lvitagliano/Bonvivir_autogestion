@@ -147,6 +147,7 @@ hr.new4 {
                                 <br /><br />
                                 <hr class="new4">
                                 <br />
+                                <h3>Elegir un tipo de pago</h3>
                                 <select class="selectpicker"  data-live-search="true"  id="tipo_pago" name="tipo_pago" data-style="select-with-transition form-control; color:#A1A1A1;width:80%" 
                                   title="TIPO DE PAGO" data-size="5">
                                        <option disabled value=''> TIPO DE PAGO</option>
@@ -156,7 +157,7 @@ hr.new4 {
 
                   
                                 <br />
-                                <span id="alert_pago" name="alert_pago" class="alert-type">Debe elegir un tipo de pago</span><br />
+                                <span id="alert_pago" name="alert_pago">Debe elegir un tipo de pago</span><br />
                   <button onclick="functionHidde()" disabled id="continuo_pago"  role="tab" data-toggle="tab" name="continuo_pago" class="btn btn-primary btn-round mb-3">
                                   Continuar pedido
                                 </button>
@@ -165,7 +166,7 @@ hr.new4 {
 
                               <div id="Transferencia" style="display:none" >
                                 <h2>Transferencia bancaria</h2>
-                                <ul style="color:black">
+                                <ul style="color:black; text-align:-webkit-left;">
                                   <li>Hacer el ACH a la cuenta: IvoTalents</li>
                                   <li>Nombre de la cuenta : Cuenta bancaria Acm Four Company   </li>
                                   <li>Nombre del Banco: Credicorpbank </li>
@@ -185,9 +186,9 @@ hr.new4 {
                                       <span class="btn btn-raised btn-round btn-default btn-file">
                                         <span class="fileinput-new">Seleccionar imagen</span>
                                         <span class="fileinput-exists">Cambiar</span>
-                                        <input type="file" name="..." id="imagebanco" name="imagebanco"/>
+                                        <input type="file" id="imagebanco" name="imagebanco"/>
                                       </span>
-                                      <a href="#"  name="imagebanco" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remover</a>
+                                      <a href="#"  name="imagebancos" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remover</a>
                                     </div>
                                   </div>
                                 </div>
@@ -195,18 +196,14 @@ hr.new4 {
                                 <input type="text" name="monto" id="monto" value={{$planes[0]->monto}} hidden>
                                 <input type="text" name="id_plan" id="id_plan" value={{$planes[0]->id}} hidden>
                                 <br />
-                                <span id="alert_comprobante" name="alert_comprobante" class="alert-type">Debe adjuntar comprobante</span><br />
+                                <span id="alert_comprobante" name="alert_comprobante">Debe adjuntar comprobante</span><br />
                                 <button disabled type="submit"  class="btn btn-primary btn-round mb-3" id="pedido" name="pedido" >
                                   Realizar pago
                                   
                                 </button>
                                 <br />
                                 <hr class="new4">
-                    
-                                <h4 align="center">
-                                    Los pagos realizados vía ACH tienen un período de comprobación de 12 horas. <br />
-                                    Una vez comprobado usted podrá acceder a su solicitud.
-                                    </h4><br /><br /><br /><br /><br />
+<br /><br /><br /><br />
                          </div>
 
                           </div>

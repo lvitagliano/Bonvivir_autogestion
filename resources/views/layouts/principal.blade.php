@@ -97,11 +97,11 @@
                              Perfil
                             </a>
                           </li>
-                          <li class="nav-item">
+                          <!-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('compras') }}">
                               Carrito
                             </a>
-                          </li>
+                          </li> -->
                           <li class="nav-item">
                             <a class="nav-link" href="{{ route('buscar') }}">
                                BUSCAR Talentos
