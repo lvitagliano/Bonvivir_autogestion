@@ -74,8 +74,9 @@ class unProyectoController extends Controller
         $deseados = CastingsSeleccionados::with(['Talentos', 'Talentos.Talentos',
         'Talentos.Talentos.Talento1','Talentos.Talentos.Talento2','Talentos.Talentos.Talento3','MensajesNoLeidosIndustria'])->where('casting_id', $uId)
         ->where('confirmado', '1')->OrderBy('favorito','DESC')->OrderBy('talento_id','ASC')->get();
+        $planes_pagos = Pago_planes::where('id_proyecto', $uId)->where('activo', 1)->orderby('created_at','desc')->first();
 
-       return view('partials._talentoSeleccionadoAceptado', compact('deseados', 'elProyecto', 'proyectos'));
+       return view('partials._talentoSeleccionadoAceptado', compact('deseados', 'elProyecto', 'proyectos','planes_pagos'));
     }
 
     public function listarTalentoSeleccionadoRechazado($uId)
@@ -555,6 +556,15 @@ class unProyectoController extends Controller
 
         return view('modals._modalVideo', compact('id'));
     }
+
+    public function confirmarseleccion($id)
+    {
+        $proyectos = CastingsSeleccionados::find($id);
+        $proyectos->seleccionado_final = 1;
+        $proyectos->Save();
+        return redirect('/unproyecto/'.$proyectos->casting_id);
+    }
+    
 
 
 

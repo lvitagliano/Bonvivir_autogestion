@@ -147,31 +147,52 @@ hr.new4 {
                                 <br /><br />
                                 <hr class="new4">
                                 <br />
+                                <h3>Elegir un tipo de pago</h3>
                                 <select class="selectpicker"  data-live-search="true"  id="tipo_pago" name="tipo_pago" data-style="select-with-transition form-control; color:#A1A1A1;width:80%" 
                                   title="TIPO DE PAGO" data-size="5">
                                        <option disabled value=''> TIPO DE PAGO</option>
                                        <option value="Transferencia">Transferencia Bancaria</option>
+                                       <option value="Cuanto">Cuanto</option>
                                    </select>
                         </div>
 
                   
                                 <br />
-                                <span id="alert_pago" name="alert_pago" class="alert-type">Debe elegir un tipo de pago</span><br />
+                                <span id="alert_pago" name="alert_pago">Debe elegir un tipo de pago</span><br />
                   <button onclick="functionHidde()" disabled id="continuo_pago"  role="tab" data-toggle="tab" name="continuo_pago" class="btn btn-primary btn-round mb-3">
                                   Continuar pedido
                                 </button>
                                 <br /><br /><br /><br /><br />
                               </div>
+                              
 
-                              <div id="Transferencia" style="display:none" >
-                                <h2>Transferencia bancaria</h2>
-                                <ul style="color:black">
-                                  <li>Hacer el ACH a la cuenta: IvoTalents</li>
-                                  <li>Nombre de la cuenta : Cuenta bancaria Acm Four Company   </li>
-                                  <li>Nombre del Banco: Credicorpbank </li>
-                                  <li>Tipo de cuenta : Cuenta Corriente </li>
-                                  <li>Nro : # 4010314895 </li>
-                                </ul>
+                           <div id="Transferencia" style="display:none" >
+
+                           <div id="descripcion_Transferencia" style="display:none">
+                                        <h2>Transferencia bancaria</h2>
+                                        <ul style="color:black">
+                                        <li>Hacer el ACH a la cuenta: IvoTalents</li>
+                                        <li>Nombre de la cuenta : Cuenta bancaria Acm Four Company   </li>
+                                        <li>Nombre del Banco: Credicorpbank </li>
+                                        <li>Tipo de cuenta : Cuenta Corriente </li>
+                                        <li>Nro : # 4010314895 </li>
+                                        </ul>
+                                    </div>
+                                    <div id="descripcion_Cuanto" style="display:none">
+                                        <h2>Pago por Cuanto</h2>
+                                        <ul style="color:black">
+                                        <li>Realiza el Pago a Cuanto por Tarjeta haciendo click al LINK</li>
+                                        <li>Baja el Comprobante de Pago </li>
+                                        <li>Adjunta el Comprobante </li>
+                                        <li>El pago puede tardar un tiempo en verse acreditado</li>
+                                        </ul>
+                                    </div>
+                                <br />
+                                <br />
+                                <br />
+                                <div id="link_Cuanto" style="display:none">
+                                    <a href="https://cuanto.app/ivotalents/p/c77f5e" target="_blank"><h4>Pagar por Cuanto</h4></a>
+                                </div>
                     
                                 <br />
                                 <h4 style="float:left">Adjuntar comprobante de recibo</h4>
@@ -185,31 +206,29 @@ hr.new4 {
                                       <span class="btn btn-raised btn-round btn-default btn-file">
                                         <span class="fileinput-new">Seleccionar imagen</span>
                                         <span class="fileinput-exists">Cambiar</span>
-                                        <input type="file" name="..." id="imagebanco" name="imagebanco"/>
+                                        <input type="file" name="imagebanco" id="imagebanco" name="imagebanco"/>
                                       </span>
-                                      <a href="#"  name="imagebanco" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remover</a>
+                                      <a href="#"  name="imagebancos" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remover</a>
                                     </div>
                                   </div>
                                 </div>
                                 <input type="text" name="project" id="project" value={{$idProj}} hidden>
                                 <input type="text" name="monto" id="monto" value={{$planes[0]->monto}} hidden>
                                 <input type="text" name="id_plan" id="id_plan" value={{$planes[0]->id}} hidden>
+
+                                
                                 <br />
-                                <span id="alert_comprobante" name="alert_comprobante" class="alert-type">Debe adjuntar comprobante</span><br />
+                                <span id="alert_comprobante" name="alert_comprobante">Debe adjuntar comprobante</span><br />
                                 <button disabled type="submit"  class="btn btn-primary btn-round mb-3" id="pedido" name="pedido" >
                                   Realizar pago
                                   
                                 </button>
                                 <br />
                                 <hr class="new4">
-                    
-                                <h4 align="center">
-                                    Los pagos realizados vía ACH tienen un período de comprobación de 12 horas. <br />
-                                    Una vez comprobado usted podrá acceder a su solicitud.
-                                    </h4><br /><br /><br /><br /><br />
+                                 <br /><br /><br /><br />
                          </div>
 
-                          </div>
+                    </div>
                         
                     </div>
                 
@@ -258,6 +277,11 @@ hr.new4 {
 function functionHidde() {
   var x = document.getElementById("Transferencia");
   var y = document.getElementById("Pedido");
+  var a = $('#tipo_pago').val();
+   $('#descripcion_'+a).show();
+   $('#link_'+a).show();
+
+
   if (x.style.display === "none") {
     x.style.display = "block";
     y.style.display = "none";

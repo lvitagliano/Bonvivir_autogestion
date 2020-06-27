@@ -218,7 +218,7 @@ hr.new4 {
 }
 .p {
   color: rgb(141, 137, 137);
-  font-weight: 500;
+  font-weight: 400;
 }
 .cardT {
   margin-bottom: 3.5rem;
@@ -323,7 +323,7 @@ hr.new4 {
           <button class="btn btn-primary btn-link"   style="padding: 5px 10px 5px 0px;" alt="Descargar Imagenes de Seleccionados"
           data-toggle="modal" data-perfil-id="{{$proyectos->id}}"
               data-target="#pagoModal">
-                <i style="font-size: 30px;margin-top:-15px" class="material-icons">cloud_download</i>
+                <i style="font-size: 30px;margin-top:-15px" class="material-icons">shopping_cart</i>
             </button>
 
           <button class="btn btn-link  @if($proyectos->seleccion_finalizada == 0)
@@ -475,10 +475,10 @@ $uid = md5(uniqid(rand(), true));
             <div class="container ">
               <div class="row">          
               <div class="content pepe" style="width: 100%;" >
-                <div style="width: 340px">
+                <div style="width: 360px">
                   <div class="card card-pricing">
                     <div class="card-content">
-                    <div class="imgPrice" style="margin-left:-12px; height: 140px;">
+                    <div class="imgPrice" style="margin-left:-12px; height: 160px;">
                      <div><h6 class="category colorHead" style="margin-top: -14px;">------</h6>
                     </div> 
                     </div>
@@ -488,9 +488,9 @@ $uid = md5(uniqid(rand(), true));
                       <h3 class="cardT">{{$planes[0]->descripcion}}</h3>
                     </div>
                   </div>
-                      <ul class="mb-4 mt-3">
+                      <ul class="mb-4 mt-3" style="text-align-last: start; max-width: 96%;">
                       @foreach($planes_items as $items)
-                         <li><p class="p" style="font-size: larger;"><i class="material-icons text-azul">check_circle_outline</i>{{$items->item}}</p></li>
+                         <li ><p class="p" style="font-size: larger;"><i class="material-icons text-azul">check_circle_outline</i> {{$items->item}}</p></li>
                       @endforeach
                       </ul>
                       <div class="card-content">
@@ -510,8 +510,6 @@ $uid = md5(uniqid(rand(), true));
   </div>
 </div>
     <!--  End Modal -->
-
-
 
 <!-- small modal -->
 <div class="modal fade" id="enviarpormail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -549,9 +547,6 @@ $uid = md5(uniqid(rand(), true));
       </div>
       <!--    end small modal -->
 </div>
-
-
-
 
 <!-- small modal -->
 <div class="modal fade" id="chatearmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -594,8 +589,6 @@ $uid = md5(uniqid(rand(), true));
 <!--    end small modal -->
 </div>
 
-
-
 <!-- small modal -->
 <div class="modal fade" id="descargarFotos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg ">
@@ -627,9 +620,6 @@ $uid = md5(uniqid(rand(), true));
       <!--    end small modal -->
 </div>
 
-
-
-
 <!-- small modal -->
 <div class="modal fade" id="enviarmensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg ">
@@ -653,7 +643,7 @@ $uid = md5(uniqid(rand(), true));
                                                 style="color: beige; background-color:#464648 " placeholder="Mensaje..."></textarea>
 
                                   </div>
-                       </div>
+            </div>
                   <input type="hidden" name="proyecto_msj" id="proyecto_msj"/>
                  <input type="button" class="btn btn-success btn-simple" id="enviar_msj" value="Enviar">
 
@@ -667,12 +657,11 @@ $uid = md5(uniqid(rand(), true));
         </div>
 
       </div>
+    
       <!--    end small modal -->
 
 
-
-
-      <div class="modal fade" id="modal-videolink">
+    <div class="modal fade" id="modal-videolink">
         <div class="modal-dialog">
             <div class="modal-content">
               <form id="AcercademiForm" method="post">
@@ -701,6 +690,30 @@ $uid = md5(uniqid(rand(), true));
         </div>
     </div>
 
+
+
+</div>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="flex-flow: row-reverse;">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+        <h3 class="modal-title" id="myModalLabel"> Confirmar </h3>
+      </div>
+      <div class="modal-body">
+      <h5>Una vez confirmado, no podrá revertir la selección</h5>
+      <input type="hidden" name="perfil_id" id="perfil_id"/>
+      <input type="hidden" name="casting_id" id="casting_id"/>
+      <input type="hidden" name="proyecto_id" id="proyecto_id"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn m-1 btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" id="btnConfirmSelect" class="btn m-1 btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection
 
@@ -708,6 +721,30 @@ $uid = md5(uniqid(rand(), true));
 @section('scripts')
 
  <script>
+
+ 
+$('#btnConfirmSelect').on('click', function(e) {
+  var dependent = $('#proyecto_id').val();
+  $.ajax({
+           url: "/confirmar-seleccion/"+dependent,
+           method: "POST",
+           success:function(result)
+                {
+                  location.reload();
+                }
+          })
+});
+
+$('#confirmModal').on('show.bs.modal', function(e) {
+    var perfil = $(e.relatedTarget).data('perfil-id');
+    var casting = $(e.relatedTarget).data('casting-id');
+    var tableId = $(e.relatedTarget).data('table-id');
+    var _token = '{{csrf_token()}}';
+    $(e.currentTarget).find('#perfil_id').val(perfil);
+    $(e.currentTarget).find('#casting_id').val(casting);
+    $(e.currentTarget).find('#proyecto_id').val(tableId);
+});
+
 
 
  $(document).on('click', '.me_caigo_acept', function(e, parameters) {

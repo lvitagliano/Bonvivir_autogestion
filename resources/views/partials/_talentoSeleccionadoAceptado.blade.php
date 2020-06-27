@@ -31,15 +31,22 @@ return $edad;
 
    @foreach($deseados as $deseado)
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-
-
           <div class="card card-profile">
+          <div style="align-self: flex-end; margin: .2rem">
+          <button 
+           class="btn btn-just-icon btn-round @if($deseado->seleccionado_final == 0) btn-grey @else btn-behance btn-disabled @endif"
+           data-target="#confirmModal" data-toggle="modal"
+           data-perfil-id="{{$deseado->Talentos->id}}" data-casting-id="{{$deseado->casting_id}}" data-table-id="{{$deseado->id}}"
+           id="btnConfirm_{{$deseado->Talentos->id}}" name="btnConfirm_{{$deseado->Talentos->id}}">
+           <i class="fa fa-check"></i><div class="ripple-container"></div>
+           </button>
+           </div>
               <div class="card-header card-avatar">
                 <a href="#pablo">
                   <img class="img" src="{{'https://ivotalent.s3-accelerate.amazonaws.com/files/thumbs/profile/'.$deseado->Talentos->id.'/540px_foto_'.$deseado->Talentos->id.'.png'}}">
                 </a>
               </div>
-            
+
               <div class="card-body">
 
                    @if($deseado->Talentos->name)
@@ -86,7 +93,8 @@ return $edad;
                       <i class="fa fa-address-card"></i><div class="ripple-container"></div>
                     </button>
                     <button class="btn btn-just-icon btn-round btn-behance  
-                    @if(App\Http\Controllers\unProyectoController::obtenerchatNoVisto($deseado->talento_id,$deseado->casting_id)>0) badge1 btn-animation-blue @endif " 
+                    @if(App\Http\Controllers\unProyectoController::obtenerchatNoVisto($deseado->talento_id,$deseado->casting_id)>0) 
+                    badge1 btn-animation-blue @endif " 
                       style="overflow:visible"
                       @if(App\Http\Controllers\unProyectoController::obtenerchatNoVisto($deseado->talento_id,$deseado->casting_id)>0)
                        data-badge="{{App\Http\Controllers\unProyectoController::obtenerchatNoVisto($deseado->talento_id,$deseado->casting_id)}}" @endif 
@@ -110,4 +118,6 @@ return $edad;
       
           </div>  
         @endForeach
+
+
 
