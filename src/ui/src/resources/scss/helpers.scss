@@ -1,0 +1,56 @@
+.helpers {
+  &__text-center {
+    text-align: center;
+  }
+
+  &__text-right {
+    text-align: right;
+  }
+
+  &__text-left {
+    text-align: right;
+  }
+
+  &__inline-b {
+    display: inline-block;
+  }
+
+  &__flex {
+    display: flex;
+  }
+
+  &__height--full {
+    height: 100vh;
+
+    @include breakpoint('small') {
+      padding-right: 6px !important;
+      padding-left: 6px !important;
+    }
+  }
+}
+
+.value-bold {
+  font-family: 'Roboto-Bold';
+  color: $card-text-selected;
+}
+
+.value-regular {
+  font-family: 'Roboto-Bold';
+  color: $complementary !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.padding-botton {
+  padding-bottom: 10px;
+}

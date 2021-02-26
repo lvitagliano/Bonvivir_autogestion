@@ -1,0 +1,109 @@
+.ModalMsj {
+  background-color: $card-bg;
+  padding: 50px 100px;
+  text-align: center;
+  max-width: 466px;
+  width: 100%;
+  margin: 9% auto 0 auto;
+
+  button {
+    margin-top: 20px;
+  }
+
+  @include breakpoint('small') {
+    padding: 13% 10px;
+    width: auto;
+    margin-top: 150px;
+  }
+
+  &__h1 {
+    color: $primary;
+    font-family: Roboto-Bold;
+    font-size: 40px;
+
+    @include breakpoint('small') {
+      font-size: 25px;
+    }
+  }
+
+  &__h2 {
+    color: $primary;
+    font-family: Roboto-Bold;
+    font-size: 22px;
+
+    @include breakpoint('small') {
+      font-size: 18px;
+    }
+  }
+
+  &__p {
+    color: $blackp;
+    font-family: Roboto-Bold;
+    max-width: 280px;
+    margin: 0 auto;
+
+    @include breakpoint('small') {
+      font-size: 11px;
+      max-width: 201px;
+    }
+  }
+
+  &__hr {
+    border-color: $gray;
+    width: 32%;
+  }
+
+  &__separator {
+    width: 100px;
+    height: 2px;
+  }
+}
+
+.custom-modal {
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  .custom-modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+
+    @include breakpoint('small') {
+      width: 70%;
+    }
+
+    .custom-modal-header {
+      padding: 2px 16px 35px 16px;
+
+      .close {
+        color: $gray;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: $blackp;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+
+    .custom-modal-body {
+      padding: 2px 16px;
+    }
+
+    .custom-modal-footer {
+      padding: 2px 16px;
+    }
+  }
+}

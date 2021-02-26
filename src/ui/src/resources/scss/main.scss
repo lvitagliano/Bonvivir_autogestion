@@ -1,0 +1,21 @@
+@import 'colors.scss';
+@import 'fonts.scss';
+@import 'mixins.scss';
+@import 'animation.scss';
+@import 'navbar.scss';
+@import 'main-container.scss';
+@import 'selection.scss';
+@import 'helpers.scss';
+@import 'registration.scss';
+@import 'cup.scss';
+@import 'form.scss';
+@import 'mobileBG.scss';
+@import 'modal.scss';
+@import 'loading.scss';
+@import 'backoffice-login.scss';
+@import 'backOffice.scss';
+@import 'au-selection.scss';
+
+*:focus {
+  outline: none;
+}

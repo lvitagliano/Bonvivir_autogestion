@@ -1,78 +1,38 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# La Nacion - Bonvivir
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Indice
 
-## About Laravel
+- [La Nacion - Bonvivir](#la-nacion---bonvivir)
+  - [Indice](#indice)
+    - [Setup con Docker](#setup-con-docker)
+    - [Setup sin Docker](#setup-sin-docker)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Setup con Docker
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+> Debe estar corriendo Docker antes de iniciar el Setup
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> En Windows puede ejecutar el archivo [`bonvivir/src/run-app.bat`](./src/run-app.bat) y pasar al paso 3
 
-## Learning Laravel
+1. Posicionarse sobre la carpeta [`bonvivir/src`](./src)
+2. Ejecutar `./run-app.sh`
+3. Elegir Ambiente que desea levantar (dev/test/prod)
+4. En caso de que no tenga el archivo de ambiente creado, el asistente le preguntara si desea crearlo; escriba `yes` y presione `enter`
+5. A continuacion le preguntara el valor que desea asignar a las variables de ambiente. Si alguna de las variables tiene un valor por defecto, este aparecera entre parentesis y sera seleccionable dejando el texto vacio y presionando `enter`
+6. En caso de que alguna variable sea requerida y no tenga valor por defecto se le volvera a preguntar que valor desea asignar resaltando que la variable es requerida
+7. Para poder generar la actualización de la base de datos tenemos que crear la table EFHistory con la siguiente query
+   `CREATE TABLE __EFMigrationsHistory ( MigrationId nvarchar(150) NOT NULL, ProductVersion nvarchar(32) NOT NULL, PRIMARY KEY (MigrationId) );`
+8. Exportamos el connection string, pero con nuestro local host como db.
+9. Actualizamos la base de datos con `dotnet ef database update`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Setup sin Docker
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Instalar Visual Studio Community 2017.
+2. Actualizar Visual Studio Community 2017 (v15.9.5) en caso de tenerlo instalado, algunas versiones pueden no servir.
+3. Instalar VSCode `https://code.visualstudio.com/`
+4. Instalar Git `https://git-scm.com/`
+5. Instalar Node (mínimo v10) `https://nodejs.org/en/download/`
+6. Instalar Yarn `https://yarnpkg.com/lang/en/` (si tienen npm/node pueden hacer `npm install -g yarn` en su lugar)
+7. Actualizar Net Core SDK a su versión 2.2.
+8. Instalar WorkBench by MySQL.
+9. Pararse en la carpeta de Bonvivir.WebApi o en el combo de target del PCM seleccionar Bonvivir.WebApi y `nuget restore` o si estás usando VS Code `dotnet restore`
+10. Correr Update database en PCM: `Update-Database` o si estás usando VS Code: `dotnet ef database update`, habiendo generado la tabla del paso 7 (Setup con Docker)

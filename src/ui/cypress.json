@@ -1,0 +1,5 @@
+{
+  "baseUrl": "http://3.88.154.161:5000",
+  "defaultCommandTimeout": 20000,
+  "video": true
+}

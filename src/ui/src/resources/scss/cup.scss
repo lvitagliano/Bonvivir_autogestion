@@ -1,0 +1,94 @@
+.bowl .inner {
+  border-radius: 0 0 100px 100px;
+  width: 64px;
+  height: 76px;
+  position: relative;
+  left: 12px;
+  top: 10px;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+}
+
+.cup {
+  position: absolute;
+  z-index: 2;
+}
+
+.cup-container {
+  width: 84px;
+  margin: 10px auto 25px auto;
+}
+
+.bowl .sminner {
+  border-radius: 0 0 100px 100px;
+  width: 42px;
+  height: 70px;
+  position: relative;
+  left: 7px;
+  top: -16px;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+}
+
+.smcup {
+  position: absolute;
+  z-index: 2;
+  height: 100px;
+}
+
+.smcup-container {
+  width: 84px;
+  margin: 40px auto 25px auto;
+  height: 159px;
+}
+
+.bowl .fill {
+  -webkit-transform: translate(0, 76px);
+  transition: all 0.5s ease;
+}
+.bowl .waveShape {
+  -webkit-animation-name: waveAction;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-duration: 0.5s;
+
+  -moz-animation-name: waveAction;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -moz-animation-duration: 0.5s;
+
+  -o-animation-name: waveAction;
+  -o-animation-iteration-count: infinite;
+  -o-animation-timing-function: linear;
+  -o-animation-duration: 0.5s;
+
+  animation-name: waveAction;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 0.5s;
+
+  width: 133px;
+  height: 152px;
+  fill: $primary;
+  fill: $primary;
+}
+
+@-webkit-keyframes fillActionStepOne {
+  0% {
+    -webkit-transform: translate(0, 76px);
+  }
+  100% {
+    -webkit-transform: translate(0, 76px);
+  }
+}
+
+@-webkit-keyframes waveAction {
+  0% {
+    -webkit-transform: translate(-64px, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+  }
+}

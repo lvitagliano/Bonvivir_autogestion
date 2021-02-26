@@ -1,0 +1,61 @@
+const ROOT = '/';
+const SELECTION = '/selection';
+const SELECTION_PARAM = ':refId';
+const SELECTIONWITHPARAM = `/selection/${SELECTION_PARAM}`;
+const REGISTRATION_PARAM = ':itemId?';
+const REGISTRATION = `/registration/${REGISTRATION_PARAM}`;
+const REGISTRATION_DEFAULT = '/registration';
+const SUBSCRIPTION = '/subscription';
+const PROFILE = '/profile';
+const SUBSCRIPTIONS = '/subscriptions';
+const SUBSCRIPTIONS_PARAM = ':subscriptionId';
+const TYPE_PARAM = ':typeId';
+const EDITSUBSCRIPTIONS = `/editsubscriptions/${TYPE_PARAM}/${SUBSCRIPTIONS_PARAM}`;
+const SUSPENDSUBSCRIPTION = `/suspendsubscription/${SUBSCRIPTIONS_PARAM}`;
+const FRIENDS = '/friends';
+const DELIVERY_STATUS_ID = ':trackingId';
+const DELIVERY_STATUS = `/delivery-status/${SUBSCRIPTIONS_PARAM}/${DELIVERY_STATUS_ID}`;
+const SUCCESSFULLY_ID = ':editId';
+const STATUS_ID = ':statusId';
+const SUCCESSFULLY =  `/successfully/${STATUS_ID}/${SUCCESSFULLY_ID}`;
+
+const BACKOFFICE_LOGIN = '/backoffice-login';
+const BACKOFFICE = '/backoffice';
+const BACKOFFICE_NEW_OFFER = '/backofficenewoffer';
+const BACKOFFICE_NEW_ITEM_PARAM = ':offerId';
+const BACKOFFICE_EDIT_OFFER_PARAM = ':offerId';
+const BACKOFFICE_EDIT_OFFER = `/backofficeeditoffer/${BACKOFFICE_EDIT_OFFER_PARAM}`;
+const BACKOFFICE_NEW_ITEM = `/backofficenewitem/${BACKOFFICE_NEW_ITEM_PARAM}`;
+const BACKOFFICE_EDIT_ITEM_PARAM = ':itemId';
+const BACKOFFICE_EDIT_ITEM = `/backofficeedititem/${BACKOFFICE_EDIT_ITEM_PARAM}`;
+const MY_SELECTIONS = `/mySelections`;
+const BACKOFFICE_SUBSCRIPTIONS_WITH_ERROR = '/backofficesubscriptionswitherror';
+export {
+  ROOT,
+  SELECTION,
+  SELECTIONWITHPARAM,
+  
+  REGISTRATION_PARAM,
+  REGISTRATION,
+  REGISTRATION_DEFAULT,
+  SUBSCRIPTION,
+  SUSPENDSUBSCRIPTION,
+  PROFILE,
+  SUBSCRIPTIONS,
+  EDITSUBSCRIPTIONS,
+  FRIENDS,
+  DELIVERY_STATUS,
+  SUCCESSFULLY,
+
+  BACKOFFICE_LOGIN,
+  BACKOFFICE,
+  BACKOFFICE_NEW_OFFER,
+  BACKOFFICE_EDIT_OFFER,
+  BACKOFFICE_NEW_ITEM,
+  BACKOFFICE_NEW_ITEM_PARAM,
+  BACKOFFICE_EDIT_ITEM,
+  BACKOFFICE_EDIT_OFFER_PARAM,
+  BACKOFFICE_EDIT_ITEM_PARAM,
+  MY_SELECTIONS,
+  BACKOFFICE_SUBSCRIPTIONS_WITH_ERROR
+};

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "frontend",
+    "imageUri": "175753211642.dkr.ecr.us-east-1.amazonaws.com/autogestion-qa:frontend-qa"
+  },
+  {
+    "name": "backend",
+    "imageUri": "175753211642.dkr.ecr.us-east-1.amazonaws.com/autogestion-qa:backend-qa"
+  },
+  {
+    "name": "encrypt",
+    "imageUri": "175753211642.dkr.ecr.us-east-1.amazonaws.com/autogestion-qa:encrypt-qa"
+  },
+  {
+    "name": "nginx",
+    "imageUri": "175753211642.dkr.ecr.us-east-1.amazonaws.com/autogestion-qa:nginx-qa"
+  }
+]

@@ -1,0 +1,90 @@
+stages:
+  - restore
+  - build
+  - test
+  - create-images
+
+variables:
+  API_CONTAINER_TEST_IMAGE: $CI_REGISTRY/active/la-nacion/bonvivir/api:test
+  WEB_CONTAINER_TEST_IMAGE: $CI_REGISTRY/active/la-nacion/bonvivir/web:test
+
+# Cache modules in between jobs
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - src/ui/node_modules/
+
+restore-ui:
+  stage: restore
+  script:
+    - "cd src/ui && yarn install"
+  only:
+    - master
+    - merge_requests
+  tags:
+    - docker
+
+restore-api:
+  stage: restore
+  script:
+    - "cd src/api && dotnet restore"
+  only:
+    - master
+    - merge_requests
+
+  tags:
+    - docker
+
+build-ui:
+  stage: build
+  script:
+    - "cd src/ui && yarn run build"
+  only:
+    - master
+    - merge_requests
+
+  tags:
+    - docker
+
+build:
+  stage: build
+  script:
+    - "cd src/api && dotnet build"
+  only:
+    - master
+    - merge_requests
+  tags:
+    - docker
+
+test:
+  stage: test
+  script:
+    - "cd src/api && dotnet test"
+  only:
+    - master
+    - merge_requests
+
+  tags:
+    - docker
+
+create-api-image:
+  stage: create-images
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker build -t $API_CONTAINER_TEST_IMAGE ./src/api
+    - docker push $API_CONTAINER_TEST_IMAGE
+  tags:
+    - docker
+  only:
+    - master
+
+create-ui-image:
+  stage: create-images
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker build -t $WEB_CONTAINER_TEST_IMAGE ./src/ui
+    - docker push $WEB_CONTAINER_TEST_IMAGE
+  tags:
+    - docker
+  only:
+    - master

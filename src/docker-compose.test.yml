@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
+    #  env_file:
+    #    - ".test.env"
+    expose:
+      - "8080"
+  encrypt:
+    build: ./encrypt
+    #env_file: ".dev.env"
+    expose:
+      - "3000"
+
+  frontend:
+    build:
+      context: ./ui/
+      dockerfile: Dockerfile
+    #   env_file:
+    #     - ".test.env"
+    command: "npm start"
+    expose:
+      - "5000"
+      
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    links:
+      - backend
+      - frontend

@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/Bonvivir.WebApi/Bonvivir.WebApi.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

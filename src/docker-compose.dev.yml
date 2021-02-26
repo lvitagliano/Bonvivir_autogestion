@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  mysql-db:
+    image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbuserpwd
+      MYSQL_DATABASE: autogestion
+      VIRTUAL_PORT: 3307
+    expose:
+      - 3307
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+
+  backend:
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
+    env_file:
+      - ".dev.env"
+    expose:
+      - "8080"
+    depends_on:
+      - mysql-db
+
+  encrypt:
+    build: ./encrypt
+    env_file: ".dev.env"
+    expose:
+      - "3000"
+
+  frontend:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    env_file:
+      - ".dev.env"
+    command: "npm start"
+    volumes:
+      - ./ui/:/app
+    expose:
+      - "5000"
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: DockerfileDev
+    ports:
+      - "80:80"
+    links:
+      - backend
+      - frontend

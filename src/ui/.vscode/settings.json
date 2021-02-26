@@ -1,0 +1,28 @@
+{
+  "markdownlint.config": {
+    "default": true,
+    "MD003": {
+      "style": "atx_closed"
+    },
+    "MD007": {
+      "indent": 2
+    },
+    "no-hard-tabs": false
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.enable": true,
+  "prettier.singleQuote": true,
+  "importCost.smallPackageSize": 50,
+  "importCost.mediumPackageSize": 100,
+  "importCost.smallPackageColor": "#7cc36e",
+  "importCost.mediumPackageColor": "#7cc36e",
+  "importCost.largePackageColor": "#d44e40",
+  "importCost.typescriptExtensions": ["\\.tsx?$"],
+  "importCost.javascriptExtensions": ["\\.jsx?$"],
+  "importCost.bundleSizeDecoration": "both",
+  "importCost.showCalculatingDecoration": true,
+  "docker.enableLinting": true,
+  "git.ignoreLimitWarning": true
+}

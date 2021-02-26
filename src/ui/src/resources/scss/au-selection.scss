@@ -1,0 +1,66 @@
+.au-selection {
+  &__selection-container {
+    background-color: #fff;
+    padding: 25px 20px;
+    border: silver solid 1px;
+    margin-top: 15px;
+    margin: 5%;
+  }
+
+  &__footer-button {
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+
+  &__selection-button {
+    width: 250px;
+  }
+
+  &__footer-button {
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+
+  &__selection-button:focus {
+    outline: none;
+  }
+
+  &__add-button {
+    border: 1px solid #762057;
+    opacity: 1;
+    font-family: 'Roboto-Bold';
+    color: #762057;
+    font-size: 18px;
+    background-color: #ffffff;
+    padding: 8px 20px;
+    margin: 60px;
+    width: 35%;
+  }
+
+  .au-selection___title {
+    font-family: 'Roboto-Bold';
+    color: #707070;
+    font-size: 18px;
+    padding: 8px 20px;
+    text-align: center;
+    margin: 3%;
+  }
+
+  @include breakpoint('small') {
+    &__selection-button {
+      width: 70%;
+      font-size: 14px;
+    }
+    &__add-button {
+      border: 1px solid #762057;
+      opacity: 1;
+      font-family: 'Roboto-Bold';
+      color: #762057;
+      font-size: 15px;
+      background-color: #ffffff;
+      padding: 8px 20px;
+      margin: 6% 0% 15% 0%;
+      width: 90%;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.backoffice-login-form {
+  display: flex;
+  justify-content: center;
+
+  &__form {
+    background-color: $white;
+    padding: 5%;
+    margin: 5%;
+    position: relative;
+    display: inline-block;
+    width: 35%;
+    text-align: -webkit-center;
+
+    img {
+      position: relative;
+      display: inline-block;
+      width: 200px;
+      height: 70px;
+      margin: 5%;
+    }
+
+    .form-group {
+      text-align: left;
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      margin-top: 5px;
+
+      .input {
+        width: 100%;
+        font-family: 'Roboto-Regular';
+        font-size: 14px;
+      }
+
+      label {
+        font-family: 'Roboto-Regular';
+        font-size: 14px;
+      }
+
+      .btn-login {
+        color: $white;
+        background-color: $primary;
+        border-color: $primary;
+        margin-top: 10px;
+        padding: 5px 10px;
+        border: none;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.margin-lo {
+  margin-top: 15%;
+}

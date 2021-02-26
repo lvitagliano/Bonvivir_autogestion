@@ -1,0 +1,107 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "frontend",
+      "image": "175753211642.dkr.ecr.us-east-1.amazonaws.com/autogestion-qa:frontend-qa",
+      "essential": true,
+      "memoryReservation": 512,
+      "environment": [
+        {
+          "name": "ASPNETCORE_ENVIRONMENT",
+          "value": "Development"
+        },
+        {
+          "name": "ASPNETCORE_URLS",
+          "value": "http://+:8080"
+        },
+        {
+          "name": "REACT_APP_PORT_API",
+          "value": "8080"
+        }
+      ],
+      "links": ["backend"]
+    },
+    {
+      "name": "backend",
+      "image": "175753211642.dkr.ecr.us-east-1.amazonaws.com/autogestion-qa:backend-qa",
+      "essential": true,
+      "memoryReservation": 512,
+      "environment": [
+        {
+          "name": "ASPNETCORE_ENVIRONMENT",
+          "value": "Development"
+        },
+        {
+          "name": "ASPNETCORE_URLS",
+          "value": "http://+:8080"
+        },
+        {
+          "name": "CONNECTION_STRING",
+          "value": "Data Source=autogestion-dev.cwmrbh2o3wag.us-east-1.rds.amazonaws.com;Database=autogestion;User ID=developer;Password=LaNacion2019;"
+        },
+        {
+          "name": "KIWI_PASSWORD",
+          "value": "C0v3D1z4!*4992"
+        },
+        {
+          "name": "KIWI_URL",
+          "value": "https://qa-api.covedisa.com/"
+        },
+        {
+          "name": "KIWI_USERNAME",
+          "value": "bonvivir"
+        },
+        {
+          "name": "ENCRYPT_SECRET_KEY",
+          "value": "3fe92ba8ed095074a3b56e83228dbc83"
+        },
+        {
+          "name": "ENCRYPT_MODE",
+          "value": "ecb"
+        },
+        {
+          "name": "ENCRYPT_SERVICE_NAME",
+          "value": "encrypt"
+        }
+      ],
+      "links": ["encrypt"]
+    },
+    {
+      "name": "encrypt",
+      "image": "175753211642.dkr.ecr.us-east-1.amazonaws.com/autogestion-qa:encrypt-qa",
+      "essential": true,
+      "memoryReservation": 512,
+      "environment": [
+        {
+          "name": "ENCRYPT_SECRET_KEY",
+          "value": "3fe92ba8ed095074a3b56e83228dbc83"
+        },
+        {
+          "name": "ENCRYPT_MODE",
+          "value": "ecb"
+        },
+        {
+          "name": "ENCRYPT_SERVICE_NAME",
+          "value": "encrypt"
+        }
+      ]
+    },
+    {
+      "name": "nginx",
+      "image": "175753211642.dkr.ecr.us-east-1.amazonaws.com/autogestion-qa:nginx-qa",
+      "essential": true,
+      "memoryReservation": 512,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "frontend",
+        "backend"
+      ]
+    }
+  ]
+}

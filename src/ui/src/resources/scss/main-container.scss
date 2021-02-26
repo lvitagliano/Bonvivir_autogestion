@@ -1,0 +1,87 @@
+.main-container {
+  background-image: url('../images/RectangleBG.jpg');
+  height: 150px;
+  background-repeat-x: repeat;
+  background-repeat-y: no-repeat;
+  width: 100%;
+  font-family: 'Roboto-Regular';
+
+  &__subscription-bg {
+    background-image: url('../images/bg_subscription.jpg') !important;
+    height: calc(100vh - 85px);
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-size: cover;
+
+    @include breakpoint('small') {
+      background-size: contain;
+      background-color: $primary;
+      background-size: auto 50%;
+      background-color: #762057;
+      height: calc(100vh - 74px);
+      background-position-x: center;
+    }
+  }
+
+  @include breakpoint('small') {
+    background-image: none;
+  }
+
+  @include breakpoint('medium') {
+    background-image: none;
+  }
+
+  @include breakpoint('large') {
+    background-image: url('../images/RectangleBG.jpg');
+  }
+
+  @include breakpoint('medium-to-large') {
+    background-image: none;
+  }
+
+  &__footer {
+    color: $gray;
+    margin-top: 30px;
+    &__img {
+      margin-bottom: 12px;
+      margin-right: 5px;
+    }
+
+    &__info {
+      p:nth-child(1) {
+        font-family: 'Roboto-Bold';
+        margin-bottom: 0;
+        font-size: 15px;
+      }
+
+      p:nth-child(2) {
+        font-size: 13px;
+      }
+    }
+
+    &__check {
+      padding-top: 5px;
+      margin-left: 25px;
+
+      p,
+      input {
+        display: inline;
+      }
+
+      p {
+        font-size: 13px;
+      }
+
+      .checkbox label {
+        font-size: 13px;
+        padding: 0;
+        display: block;
+      }
+    }
+
+    &__button {
+      padding-top: 10px;
+      padding-bottom: 45px;
+    }
+  }
+}

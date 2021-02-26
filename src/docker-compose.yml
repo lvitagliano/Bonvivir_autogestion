@@ -1,0 +1,37 @@
+# For local run (Lagash):
+
+version: "3"
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "8081:80"
+    links:
+      - backend
+      - frontend
+
+  encrypt:
+    build: ./encrypt
+    env_file: ".dev.env"
+    expose:
+      - "3000"
+
+  backend:
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
+    env_file:
+      - ".dev.env"
+    expose:
+      - "8080"
+
+  frontend:
+    build:
+      context: ./ui/
+      dockerfile: Dockerfile
+    env_file:
+      - ".dev.env"
+    command: "npm start"
+    expose:
+      - "3000"

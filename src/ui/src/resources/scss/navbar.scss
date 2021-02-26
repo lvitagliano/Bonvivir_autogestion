@@ -1,0 +1,189 @@
+.navbarb {
+  &__container-logo-image {
+    @include breakpoint('large') {
+      text-align: left;
+    }
+
+    @include breakpoint('medium') {
+      text-align: left;
+    }
+
+    @include breakpoint('small') {
+      text-align: center;
+    }
+  }
+  &__header {
+    background-color: $white;
+    height: 85px;
+    position: relative;
+    z-index: 2;
+    -webkit-box-shadow: 0px 6px 13px -4px rgba(0, 0, 0, 0.32);
+    -moz-box-shadow: 0px 6px 13px -4px rgba(0, 0, 0, 0.32);
+    box-shadow: 0px 6px 13px -4px rgba(0, 0, 0, 0.32);
+    @include breakpoint('small') {
+      height: 74px;
+    }
+  }
+
+  &__logo-image {
+    width: 170px;
+
+    @include breakpoint('small') {
+      width: 140px;
+    }
+  }
+
+  &__text {
+    font-family: Roboto-Bold;
+    font-size: 25px;
+    color: $primary;
+    margin-top: 30px;
+    text-align: center;
+
+    @include breakpoint('small') {
+      display: none;
+    }
+    @include breakpoint('medium') {
+      display: none;
+    }
+    @include breakpoint('large') {
+      display: block;
+    }
+    @include breakpoint('medium-to-large') {
+      display: block;
+    }
+  }
+
+  &__button-hamburguer {
+    border: none;
+    background: none;
+    padding: 0;
+    color: $primary;
+    margin-top: 30px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__environment-info {
+    position: absolute;
+    color: $environment;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 99;
+    padding: 5px;
+    border-radius: 6px;
+    margin: 4px 0 0 4px;
+    font-size: 10px;
+  }
+}
+
+.au-navbar {
+  &__container-margin {
+    margin: 0% 15% 0% 15%;
+  }
+
+  &__navbar-bon.navbar {
+    background-color: white;
+    -webkit-box-shadow: 0px 6px 13px -4px rgba(0, 0, 0, 0.32);
+    -moz-box-shadow: 0px 6px 13px -4px rgba(0, 0, 0, 0.32);
+    box-shadow: 0px 6px 13px -4px rgba(0, 0, 0, 0.32);
+    height: 85px;
+    position: relative;
+    z-index: 2;
+    justify-content: flex-start;
+  }
+
+  &__text {
+    color: #707070;
+    padding: 10px;
+    font-family: Roboto-Bold;
+  }
+
+  &__margin-nav.nav {
+    margin: -35px;
+  }
+
+  &__margin-col.col {
+    margin-right: 15%;
+    margin-left: 15%;
+  }
+
+  &__button-bon.navbar-toggle {
+    border: none !important;
+    color: #762057;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+
+  &__navbartogglebutton.navbar-toggle {
+    float: left !important;
+    font-size: 20px;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+
+  &__button-bon.navbar-toggle:hover {
+    border: none;
+    background-color: white !important;
+  }
+
+  &__button-bon.navbar-toggle:focus {
+    border: none;
+    background-color: white;
+  }
+
+  &__logo-bon {
+    margin-top: 10px;
+    width: 160px;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    &__margin-col.col {
+      margin-right: 0px;
+      margin-left: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    &__logo-bonvi {
+      width: 150px;
+      margin-left: 5%;
+      margin-top: 1%;
+    }
+    &__navbar-bon {
+      height: 74px !important;
+    }
+    &__align-center {
+      text-align: center !important;
+    }
+    &__margin-right {
+      margin-right: 55px;
+    }
+    &__text-left {
+      text-align: left;
+    }
+    &__margin-top.navbar-collapse {
+      margin-top: 5%;
+      background-color: white;
+    }
+    .navbar-collapse {
+      border-top: none;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .collapsing {
+      border: none;
+      width: 100%;
+      background-color: none;
+    }
+    &__flex-nav.navbar-nav {
+      margin: 2%;
+    }
+  }
+  @include breakpoint('medium') {
+    &__flex-nav.navbar-nav {
+      flex-direction: row;
+    }
+  }
+}

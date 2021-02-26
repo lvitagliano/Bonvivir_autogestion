@@ -1,0 +1,36 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:8080",
+      "sslPort": 44347
+    }
+  },
+  "profiles": {
+    "Development": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "api/values",
+      "applicationUrl": "http://localhost:27115",
+      "environmentVariables": {
+        "KIWI_PASSWORD": "C0v3D1z4!*4992",
+        "CONNECTION_STRING": "Data Source=localhost;Database=autogestion;User ID=root;Password=;",
+        "KIWI_USERNAME": "bonvivir",
+        "KIWI_URL": "https://qa-api.covedisa.com/",
+        "ENCRYPT_SERVICE_NAME": "encrypt",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Production": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "api/values",
+      "applicationUrl": "http://localhost:27116",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    }
+  }
+}
